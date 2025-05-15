@@ -396,6 +396,90 @@ main {
 	gap: 2rem;
 }
 
+/* Effects Section */
+.effects {
+	padding: 5rem 0;
+	background-color: var(--primary-light);
+}
+
+.effects-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.effects-category {
+	background-color: var(--white);
+	border-radius: 10px;
+	padding: 2rem;
+	box-shadow: var(--shadow);
+	transition: var(--transition);
+}
+
+.effects-category:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.effects-category h3 {
+	color: var(--primary-dark);
+	font-size: 1.5rem;
+	margin-bottom: 1.5rem;
+	display: flex;
+	align-items: center;
+}
+
+.effects-category h3 i {
+	margin-right: 10px;
+	color: var(--primary-color);
+}
+
+.effects-list {
+	margin-left: 1.5rem;
+}
+
+.effects-list li {
+	margin-bottom: 1rem;
+	position: relative;
+	list-style-type: disc;
+	padding-left: 0.5rem;
+}
+
+.effect-highlight {
+	color: var(--primary-dark);
+	font-weight: 600;
+}
+
+.effect-note {
+	font-style: italic;
+	font-weight: 600;
+}
+
+.effects-conclusion {
+	margin-top: 1.5rem;
+	padding-top: 1rem;
+	border-top: 1px solid #eee;
+	font-weight: 500;
+}
+
+.effects-conclusion p {
+	display: flex;
+	align-items: center;
+}
+
+.effects-conclusion i {
+	color: var(--primary-color);
+	margin-right: 10px;
+}
+
+.side-effects h3 i {
+	color: #e57373;
+}
+
+.recommendations h3 i {
+	color: #64b5f6;
+}
+
 .benefit-card {
 	background-color: var(--white);
 	border-radius: 10px;
@@ -911,7 +995,6 @@ main {
 	.hero-content p {
 		margin: 0 auto 2rem;
 	}
-
 	.hero-btns {
 		justify-content: center;
 	}
@@ -919,6 +1002,19 @@ main {
 	.hero-image {
 		order: 0;
 		margin-bottom: 2rem;
+	}
+
+	/* Effects section responsive */
+	.effects-category {
+		padding: 1.5rem;
+	}
+
+	.effects-list {
+		margin-left: 1rem;
+	}
+
+	.effects-category h3 {
+		font-size: 1.3rem;
 	}
 
 	.footer-top {
@@ -935,13 +1031,25 @@ main {
 	.section-title {
 		font-size: 1.8rem;
 	}
-
 	.hero-content h2 {
 		font-size: 2rem;
 	}
 	.contact-info,
 	.contact-form {
 		padding: 2rem;
+	}
+
+	/* Effects section responsive for mobile */
+	.effects-category h3 {
+		font-size: 1.2rem;
+	}
+
+	.effects-list li {
+		font-size: 0.95rem;
+	}
+
+	.effects-conclusion p {
+		font-size: 0.95rem;
 	}
 }
 

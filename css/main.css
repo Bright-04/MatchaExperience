@@ -1207,3 +1207,132 @@ main {
 		margin: 0 auto;
 	}
 }
+
+/* Recipes Section */
+.recipes {
+	padding: 5rem 0;
+	background-color: #f9f9f9;
+}
+
+.recipes-intro {
+	text-align: center;
+	max-width: 800px;
+	margin: 0 auto 3rem;
+	color: var(--text-color);
+	font-size: 1.1rem;
+}
+
+.recipe-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 2.5rem;
+}
+
+.recipe-card {
+	background-color: var(--white);
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: var(--shadow);
+	transition: var(--transition);
+	display: flex;
+	flex-direction: column;
+}
+
+.recipe-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-header {
+	padding: 1.5rem;
+	text-align: center;
+	background-color: var(--primary-light);
+	color: var(--primary-dark);
+}
+
+.recipe-header h3 {
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.recipe-subtitle {
+	font-size: 0.9rem;
+	font-style: italic;
+}
+
+.recipe-image {
+	height: 200px;
+	overflow: hidden;
+}
+
+.recipe-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s ease;
+}
+
+.recipe-card:hover .recipe-image img {
+	transform: scale(1.05);
+}
+
+.recipe-content {
+	padding: 1.5rem;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.recipe-features {
+	margin-bottom: 1.5rem;
+}
+
+.recipe-features h4,
+.recipe-instructions h4 {
+	font-size: 1.2rem;
+	color: var(--primary-dark);
+	margin-bottom: 0.75rem;
+	position: relative;
+	padding-left: 1.5rem;
+}
+
+.recipe-features h4:before,
+.recipe-instructions h4:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 1rem;
+	height: 1rem;
+	background-color: var(--primary-color);
+	opacity: 0.3;
+	border-radius: 50%;
+}
+
+.recipe-features ul,
+.recipe-instructions ol {
+	padding-left: 1.5rem;
+}
+
+.recipe-features li {
+	margin-bottom: 0.5rem;
+	position: relative;
+	line-height: 1.4;
+}
+
+.recipe-instructions li {
+	margin-bottom: 0.75rem;
+	line-height: 1.4;
+}
+
+.recipe-instructions {
+	margin-top: auto;
+}
+
+/* Media Queries for Recipes Section */
+@media (max-width: 768px) {
+	.recipe-grid {
+		grid-template-columns: 1fr;
+	}
+}

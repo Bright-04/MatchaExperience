@@ -1,0 +1,40 @@
+/* Media query for mobile devices - Footer specific */
+@media (max-width: 768px) {
+	.footer-top {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	.footer-social-wrapper {
+		align-items: flex-start;
+	}
+
+	.social-icons {
+		justify-content: flex-start;
+	}
+
+	.footer-info h3:after,
+	.footer-social-wrapper h4:after {
+		margin-left: 0;
+	}
+}
+
+@media (max-width: 576px) {
+	.footer {
+		padding: 3rem 0 1.5rem;
+	}
+
+	.footer-contact-info {
+		margin-top: 1rem;
+	}
+
+	.contact-item {
+		margin-bottom: 0.8rem;
+	}
+
+	.social-icons a {
+		width: 35px;
+		height: 35px;
+		font-size: 1rem;
+	}
+}

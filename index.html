@@ -5,7 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Matcha Experience</title>
 		<link rel="stylesheet" href="css/main.css" />
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="css/cultivars.css" />
+		<link rel="stylesheet" href="css/history.css" />
+		<link rel="stylesheet" href="css/footer-responsive.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 	</head>
 	<body>
@@ -23,11 +26,21 @@
 						<span class="hamburger"></span>
 					</button>
 					<ul class="nav-menu">
-						<li><a href="#home" class="nav-link">Home</a></li>
-						<li><a href="#about" class="nav-link">About</a></li>
-						<li><a href="#benefits" class="nav-link">Benefits</a></li>
-						<li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-						<li><a href="#contact" class="nav-link">Contact</a></li>
+						<li><a href="#home" class="nav-link">Trang Chủ</a></li>
+						<li><a href="#history" class="nav-link">Lịch Sử</a></li>
+						<li><a href="#tiers" class="nav-link">Phân Hạng</a></li>
+						<li><a href="#recipes" class="nav-link">Công Thức</a></li>
+						<li><a href="#cultivars" class="nav-link">Giống Trà</a></li>
+						<li><a href="#effects" class="nav-link">Tác Dụng</a></li>
+						<!-- Temporarily disabled navigation links
+						<li><a href="#about" class="nav-link">Giới Thiệu</a></li>
+						-->
+						<!-- Temporarily disabled navigation link
+						<li><a href="#testimonials" class="nav-link">Đánh Giá</a></li>
+						-->
+						<!-- Temporarily disabled navigation link
+						<li><a href="#contact" class="nav-link">Liên Hệ</a></li>
+						-->
 					</ul>
 				</nav>
 			</div>
@@ -37,28 +50,155 @@
 			<section id="home" class="hero">
 				<div class="container">
 					<div class="hero-content">
-						<h2>Discover the Power of Matcha</h2>
-						<p>Experience the ancient Japanese tradition with our premium quality matcha green tea. A perfect balance of flavor, health benefits, and energy.</p>
-						<div class="hero-btns">
-							<a href="#" class="btn btn-primary">Shop Matcha</a>
-							<a href="#about" class="btn btn-secondary">Learn More</a>
+						<h2>Matcha</h2>
+						<p>
+							Không chỉ là một loại trà xanh, matcha là một xu hướng thời đại mới nhưng vẫn mang đậm khí chất cổ xưa. Vừa lưu giữ tinh hoa của trà đạo, vừa cuốn hút bởi sắc xanh đặc
+							trưng và hương vị độc đáo, matcha đã và đang, chinh phục giới trẻ và trở thành một phần không thể thiếu trong trải nghiệm ẩm thực hiện đại.
+						</p>
+						<div class="quick-nav">
+							<h3>Khám phá về Matcha:</h3>
+							<div class="quick-nav-links">
+								<a href="#history" class="quick-nav-item"><i class="fas fa-book-open"></i> Lịch Sử & Nguồn Gốc</a>
+								<a href="#tiers" class="quick-nav-item"><i class="fas fa-layer-group"></i> Phân Hạng</a>
+								<a href="#recipes" class="quick-nav-item"><i class="fas fa-mug-hot"></i> Công Thức Matcha</a>
+								<a href="#cultivars" class="quick-nav-item"><i class="fas fa-seedling"></i> Matcha Gợi Ý</a>
+								<a href="#effects" class="quick-nav-item"><i class="fas fa-heartbeat"></i> Tác Dụng</a>
+							</div>
 						</div>
 					</div>
 					<div class="hero-image">
-						<img src="images/cup-of-matcha-vertical.jpg" alt="Cup of matcha tea" />
+						<iframe
+							width="471"
+							height="838"
+							src="https://www.youtube.com/embed/sxIiSW2K8Vw"
+							title="Soy matcha latte🌱🍵 #matchalatte #matcha #soymatcha #matchasoylatte #satisfyingasmr"
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							referrerpolicy="strict-origin-when-cross-origin"
+							allowfullscreen
+						></iframe>
 					</div>
 				</div>
 			</section>
 
+			<section id="history" class="history">
+				<div class="container">
+					<h2 class="section-title">Lịch Sử & Nguồn Gốc</h2>
+					<div class="history-wrapper">
+						<div class="history-content">
+							<h3>Lịch sử hình thành</h3>
+							<ul class="timeline">
+								<li>
+									<span class="timeline-date">Thế kỷ 7-10</span>
+									<div class="timeline-content">
+										<h4>Nhà Đường, Trung Quốc</h4>
+										<p>Phương pháp nghiền lá trà thành bột và hòa với nước nóng xuất hiện tại Trung Quốc để dễ dàng vận chuyển.</p>
+									</div>
+								</li>
+								<li>
+									<span class="timeline-date">Cuối thế kỷ 12</span>
+									<div class="timeline-content">
+										<h4>Du nhập vào Nhật Bản</h4>
+										<p>Nhà sư Eisai mang hạt giống trà và phương pháp uống trà bột từ Trung Quốc về Nhật Bản. Trà bột từ đó gắn liền với Thiền tông trong các tu viện.</p>
+									</div>
+								</li>
+								<li>
+									<span class="timeline-date">Thế kỷ 13-15</span>
+									<div class="timeline-content">
+										<h4>Phổ biến trong giới quý tộc</h4>
+										<p>Uống trà bột trở nên phổ biến trong giới quý tộc và các tầng lớp võ sĩ samurai ở Nhật Bản. Các nghi thức trà sơ khai bắt đầu hình thành.</p>
+									</div>
+								</li>
+								<li>
+									<span class="timeline-date">Thế kỷ 15-16</span>
+									<div class="timeline-content">
+										<h4>Trà đạo Nhật Bản</h4>
+										<p>
+											Trà đạo Nhật Bản (Chanoyu) được phát triển bởi Murata Juko và hoàn thiện bởi Sen no Rikyu, nâng việc thưởng trà matcha lên thành một loại hình nghệ thuật
+											tinh tế với các nguyên tắc và nghi lễ chặt chẽ.
+										</p>
+									</div>
+								</li>
+								<li>
+									<span class="timeline-date">1603-1868</span>
+									<div class="timeline-content">
+										<h4>Thời kỳ Edo</h4>
+										<p>Trà đạo tiếp tục phát triển và lan rộng trong xã hội Nhật Bản. Các trường phái trà đạo khác nhau ra đời.</p>
+									</div>
+								</li>
+								<li>
+									<span class="timeline-date">Thế kỷ 20 - nay</span>
+									<div class="timeline-content">
+										<h4>Lan tỏa toàn cầu</h4>
+										<p>
+											Matcha vẫn giữ vai trò quan trọng trong trà đạo truyền thống Nhật Bản. Đồng thời, nó trở nên phổ biến trên toàn thế giới và được sử dụng rộng rãi trong ẩm
+											thực hiện đại. Đặc biệt tại Việt Nam, matcha và matcha latte trở thành một trong những thức uống được yêu thích nhất bởi nhóm người tiêu dùng trẻ.
+										</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="production-process">
+						<h3>Quy trình sản xuất</h3>
+						<div class="process-grid">
+							<div class="process-step">
+								<div class="step-icon"><i class="fas fa-umbrella"></i></div>
+								<h4>Che bóng (Shading)</h4>
+								<p>
+									Đầu tháng 4, những chồi non được che phủ hoàn toàn trong khoảng 20 ngày bằng khung tre và rơm. Việc này nhằm chặn ánh sáng mặt trời trực tiếp và giảm quá trình
+									quang hợp, dẫn đến hàm lượng theanine cao hơn, tạo hương vị đậm đà cho matcha và gyokuro.
+								</p>
+							</div>
+							<div class="process-step">
+								<div class="step-icon"><i class="fas fa-leaf"></i></div>
+								<h4>Thu hoạch (Harvesting)</h4>
+								<p>
+									Đầu tháng Năm, Hachijuhachiya - ngày thứ 88 sau Risshun (ngày đầu tiên của mùa xuân theo lịch Nhật Bản truyền thống), đánh dấu "first flush", tức vụ thu hoạch đầu
+									tiên trong năm của những lá non, được đánh giá cao về chất lượng, độ tươi và hương vị.
+								</p>
+							</div>
+							<div class="process-step">
+								<div class="step-icon"><i class="fas fa-cloud"></i></div>
+								<h4>Hấp (Steaming)</h4>
+								<p>
+									Lá trà Nhật Bản được hấp sau khi thu hoạch trong khoảng 15-20 giây, thường là trong vòng 12-20 giờ sau khi hái. Mục đích của việc hấp là ngăn chặn quá trình oxy
+									hóa, giúp giữ lại màu xanh tự nhiên, hương thơm và các thành phần dinh dưỡng của lá.
+								</p>
+							</div>
+							<div class="process-step">
+								<div class="step-icon"><i class="fas fa-wind"></i></div>
+								<h4>Xử lý lá (Leaf Processing)</h4>
+								<p>
+									Khác với gyokuro và sencha được cuộn chặt sau khi hấp, lá trà dùng để làm matcha không được cuộn mà thay vào đó, chúng được đưa qua nhiều buồng của một hệ thống khí
+									lớn, nơi lá được thổi nhẹ và làm mát bằng luồng khí nhẹ. Sau đó, lá được rải đều trên bề mặt phẳng để tiếp tục làm khô. Trước khi khô hoàn toàn, lá đi qua một máy
+									dạng trống đặc biệt để tách gân và cuống ra khỏi phần thịt lá chính. Phần còn lại sau khi tách và làm khô được gọi là tencha, đây là nguyên liệu thô để nghiền thành
+									bột matcha.
+								</p>
+							</div>
+							<div class="process-step">
+								<div class="step-icon"><i class="fas fa-mortar-pestle"></i></div>
+								<h4>Nghiền bột (Grinding)</h4>
+								<p>
+									Bước cuối cùng là nghiền lá tencha thành bột mịn. Phương pháp truyền thống trong khoảng 800 năm là nghiền thủ công bằng cối đá. Ngày nay, người ta sử dụng cối đá tự
+									động bằng để tạo ra bột matcha siêu mịn với độ đồng đều cao, đồng thời không làm cháy lá trà.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Temporarily disabled About Matcha section
 			<section id="about" class="about">
 				<div class="container">
-					<h2 class="section-title">About Matcha</h2>
+					<h2 class="section-title">Giới Thiệu Matcha</h2>
 					<div class="about-wrapper">
 						<div class="about-image">
 							<img src="images/bowl-of-matcha-horz.jpg" alt="Traditional matcha preparation" />
 						</div>
 						<div class="about-text">
-							<h3>The History of Matcha</h3>
+							<h3>Lịch Sử Matcha</h3>
 							<p>
 								Matcha is a finely ground powder of specially grown and processed green tea leaves. Unlike regular green tea, matcha contains the entire tea leaf, providing a more
 								concentrated source of nutrients and antioxidants.
@@ -66,44 +206,428 @@
 							<p>
 								Originating from Japan, matcha has been used in traditional tea ceremonies for centuries and is now enjoyed worldwide for its unique flavor profile and health benefits.
 							</p>
-							<h3>Our Premium Quality</h3>
+							<h3>Chất Lượng Cao Cấp</h3>
 							<p>We source our matcha from the finest tea farms in Japan, ensuring exceptional quality, vibrant color, and authentic flavor with every cup.</p>
 						</div>
 					</div>
 				</div>
 			</section>
-
+			-->
+			<!-- Temporarily disabled Benefits of Matcha section
 			<section id="benefits" class="benefits">
 				<div class="container">
-					<h2 class="section-title">Benefits of Matcha</h2>
+					<h2 class="section-title">Lợi Ích Của Matcha</h2>
 					<div class="benefits-grid">
 						<div class="benefit-card">
 							<i class="fas fa-brain"></i>
-							<h3>Enhanced Focus</h3>
+							<h3>Tăng Cường Tập Trung</h3>
 							<p>The L-theanine in matcha promotes alertness and calm focus without the jitters.</p>
 						</div>
 						<div class="benefit-card">
 							<i class="fas fa-heartbeat"></i>
-							<h3>Heart Health</h3>
+							<h3>Sức Khỏe Tim Mạch</h3>
 							<p>Rich in catechins that may help protect against heart disease.</p>
 						</div>
 						<div class="benefit-card">
 							<i class="fas fa-fire"></i>
-							<h3>Metabolism Boost</h3>
+							<h3>Tăng Cường Trao Đổi Chất</h3>
 							<p>Can help increase metabolism and burn calories more efficiently.</p>
 						</div>
 						<div class="benefit-card">
 							<i class="fas fa-shield-alt"></i>
-							<h3>Antioxidant Rich</h3>
+							<h3>Giàu Chất Chống Oxy Hóa</h3>
 							<p>Contains powerful antioxidants that help fight free radicals.</p>
+						</div>
+					</div>
+				</div>
+			</section>			-->
+			<section id="tiers" class="tiers">
+				<div class="container">
+					<h2 class="section-title">Phân Hạng</h2>
+					<p class="tiers-intro">Matcha trà xanh được phân chia thành ba hạng chính dựa vào chất lượng và mục đích sử dụng:</p>
+					<div class="tiers-grid">
+						<div class="tier-card ceremonial">
+							<div class="tier-header">
+								<h3>Hạng Nghi lễ</h3>
+								<span class="tier-name">Ceremonial Grade</span>
+							</div>
+							<div class="tier-content">
+								<div class="tier-icon">
+									<i class="fas fa-crown"></i>
+								</div>
+								<ul class="tier-features">
+									<li>Dành cho các nghi lễ trà đạo trang trọng và trong các chùa Phật giáo</li>
+									<li>Đạt tiêu chuẩn chất lượng cao nhất để phục vụ cho nghi lễ và thi đấu</li>
+									<li>Bắt buộc phải có chất lượng cao để pha <em>koicha</em> (nùng trà, trà đặc)</li>
+									<li>Một số có vị ngọt rõ rệt, số khác đắng hơn nhưng cốt yếu là sự hài hòa về hương vị</li>
+									<li>Màu xanh tươi sáng, kết cấu mịn như phấn</li>
+								</ul>
+								<div class="tier-price">
+									<span>Mức giá: Cao nhất</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="tier-card premium">
+							<div class="tier-header">
+								<h3>Hạng Cao cấp</h3>
+								<span class="tier-name">Premium Grade</span>
+							</div>
+							<div class="tier-content">
+								<div class="tier-icon">
+									<i class="fas fa-star"></i>
+								</div>
+								<ul class="tier-features">
+									<li>Trà xanh matcha chất lượng cao, được làm từ lá trà non ở phần ngọn của cây trà</li>
+									<li>Thích hợp nhất để uống hàng ngày với vị tươi và tinh tế</li>
+									<li>Dễ uống, phù hợp với người mới bắt đầu</li>
+									<li>Có chút đắng nhẹ, hậu vị ngọt</li>
+									<li>Màu xanh sẫm hơn Hạng Nghi lễ</li>
+								</ul>
+								<div class="tier-price">
+									<span>Mức giá: Trung bình</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="tier-card culinary">
+							<div class="tier-header">
+								<h3>Hạng Ẩm thực</h3>
+								<span class="tier-name">Culinary Grade</span>
+							</div>
+							<div class="tier-content">
+								<div class="tier-icon">
+									<i class="fas fa-utensils"></i>
+								</div>
+								<ul class="tier-features">
+									<li>Phù hợp cho các mục đích nấu ăn, làm bánh và pha chế đồ uống</li>
+									<li>Hơi đắng do các yếu tố như sản xuất từ lá phía dưới của cây chè</li>
+									<li>Ảnh hưởng bởi các yếu tố môi trường, thời điểm thu hoạch và quy trình sản xuất</li>
+									<li>Màu xanh sẫm, hơi ngả vàng</li>
+									<li>Vị đắng chát nhiều để không bị "chìm" khi kết hợp với nguyên liệu khác</li>
+								</ul>
+								<div class="tier-price">
+									<span>Mức giá: Thấp nhất</span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
+			<section id="recipes" class="recipes">
+				<div class="container">
+					<h2 class="section-title">Công thức</h2>
+					<p class="recipes-intro">Khám phá đa dạng cách thưởng thức matcha từ truyền thống đến hiện đại:</p>
+
+					<div class="recipe-grid">
+						<div class="recipe-card">
+							<div class="recipe-header">
+								<h3>Usucha</h3>
+								<span class="recipe-subtitle">Truyền thống Nhật Bản</span>
+							</div>
+							<div class="recipe-image">
+								<img src="images/usucha.jpg" alt="Usucha - Traditional Japanese Matcha" />
+							</div>
+							<div class="recipe-content">
+								<div class="recipe-features">
+									<h4>Đặc điểm</h4>
+									<ul>
+										<li>Đây là cách thưởng thức matcha truyền thống của Nhật Bản</li>
+										<li>Có thể cảm nhận được vị thuần túy của matcha mà không bị các nguyên liệu khác lấn át</li>
+									</ul>
+								</div>
+								<div class="recipe-instructions">
+									<h4>Công thức</h4>
+									<ol>
+										<li>Ngâm <em>chasen</em> (chổi tre) trước trong nước ấm để các nan tre nở ra</li>
+										<li>Sử dụng <em>chashaku</em> (muỗng tre) cho khoảng 2-4g matcha vào <em>chawan</em> (bát trà)</li>
+										<li>Sau đó cho vào 60-80ml nước ấm ở nhiệt độ 70–85°C</li>
+										<li>Hỗn hợp nước và bột trà được đánh tan hoàn toàn bằng <em>chasen</em> theo hình Zigzag để bọt lên đều và không vón cục</li>
+										<li>Khi thưởng thức, <em>usucha</em> được dùng kèm với một chiếc bánh <em>wagashi</em> nhỏ để cân bằng vị đắng</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+
+						<div class="recipe-card">
+							<div class="recipe-header">
+								<h3>Matcha Latte</h3>
+								<span class="recipe-subtitle">Fusion Á - Âu</span>
+							</div>
+							<div class="recipe-image">
+								<img src="images/matcha-latte.jpg" alt="Matcha Latte" />
+							</div>
+							<div class="recipe-content">
+								<div class="recipe-features">
+									<h4>Đặc điểm</h4>
+									<ul>
+										<li>Sự pha trộn giữa matcha truyền thống Nhật Bản và sữa tươi (hoặc các loại sữa hạt) phổ biến trong văn hóa cà phê phương Tây</li>
+										<li>Vị đắng đặc trưng của matcha được làm dịu đi bởi vị béo ngậy của sữa</li>
+										<li>Có thể điều chỉnh độ ngọt, thêm các loại syrup hoặc mứt theo sở thích cá nhân</li>
+										<li>Có thể dùng nóng hoặc lạnh</li>
+									</ul>
+								</div>
+								<div class="recipe-instructions">
+									<h4>Công thức</h4>
+									<ol>
+										<li>Sử dụng <em>chashaku</em> cho khoảng 3-5g matcha vào <em>chawan</em></li>
+										<li>Sau đó cho vào 30-50ml nước ấm ở nhiệt độ 70–85°C</li>
+										<li>Dùng <em>chasen</em> (đã ngâm nước ấm) đánh tan hoàn toàn bột matcha với nước cho đến khi không còn vón cục và có một lớp bọt mỏng trên bề mặt</li>
+										<li>Thêm 120-180ml sữa tươi (hoặc sữa thực vật như hạnh nhân, yến mạch, đậu nành) tùy theo nhu cầu</li>
+										<li>Rót ra ly, thêm đá và thưởng thức</li>
+										<li>Có thể thêm đường, mật ong, hoặc các loại syrup khác để tăng độ ngọt</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+
+						<div class="recipe-card">
+							<div class="recipe-header">
+								<h3>London Fog</h3>
+								<span class="recipe-subtitle">Fusion Đông - Tây</span>
+							</div>
+							<div class="recipe-image">
+								<img src="images/london-fog.jpg" alt="London Fog Matcha" />
+							</div>
+							<div class="recipe-content">
+								<div class="recipe-features">
+									<h4>Đặc điểm</h4>
+									<ul>
+										<li>Đậm vị trà do sự kết hợp giữa trà Earl Grey và Matcha giúp tăng độ tỉnh táo</li>
+										<li>Mang lại sự mơ màng trong cả vị giác và hình thức, được ví như màn sương mù của thành phố London, Anh</li>
+										<li>Không khuyến cáo sử dụng ban đêm và với người có triệu chứng về tim mạch, khó ngủ</li>
+									</ul>
+								</div>
+								<div class="recipe-instructions">
+									<h4>Công thức</h4>
+									<ol>
+										<li>
+											<strong>Pha syrup earl grey:</strong> Đun sôi hỗn hợp đường, nước, trà với tỉ lệ 1:1:1 đến khi sệt lại. Sau đó để nguội và có thể giữ trong tủ lạnh trong
+											vòng 2 tuần
+										</li>
+										<li>Pha 1 gói trà earl grey túi lọc với 50ml nước ấm</li>
+										<li>Sử dụng <em>chashaku</em> cho khoảng 3-5g matcha vào <em>chawan</em></li>
+										<li>Sau đó cho vào 30-50ml nước ấm ở nhiệt độ 70–85°C</li>
+										<li>Dùng <em>chasen</em> (đã ngâm nước ấm) đánh tan hoàn toàn bột matcha với nước cho đến khi không còn vón cục và có một lớp bọt mỏng trên bề mặt</li>
+										<li>Lần lượt cho syrup earl grey, trà earl grey và đá vào ly. Sau đó cho matcha lên trên cùng và thưởng thức</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+
+						<div class="recipe-card">
+							<div class="recipe-header">
+								<h3>Cold-Whisked Matcha Latte</h3>
+								<span class="recipe-subtitle">Phong cách hiện đại</span>
+							</div>
+							<div class="recipe-image">
+								<img src="images/cold-whisked-matcha-latte.jpg" alt="Cold-Whisked Matcha Latte" />
+							</div>
+							<div class="recipe-content">
+								<div class="recipe-features">
+									<h4>Đặc điểm</h4>
+									<ul>
+										<li>Khá giống với matcha latte thông thường nhưng có hương vị đậm đà hơn</li>
+										<li>Chỉ có thể uống lạnh</li>
+										<li>Phù hợp với người bận rộn vì không cần dùng nước ấm</li>
+									</ul>
+								</div>
+								<div class="recipe-instructions">
+									<h4>Công thức</h4>
+									<ol>
+										<li>Sử dụng <em>chashaku</em> cho khoảng 4-5g matcha vào cốc</li>
+										<li>Sau đó cho vào 30-50ml sữa tươi (hoặc các loại sữa hạt tùy theo nhu cầu)</li>
+										<li>Dùng <em>frother</em> đánh tan hoàn toàn bột matcha với sữa cho đến khi không còn vón cục và có một lớp bọt mỏng trên bề mặt</li>
+										<li>Thêm 120-180ml sữa tươi (hoặc sữa thực vật như hạnh nhân, yến mạch, đậu nành) tùy theo nhu cầu</li>
+										<li>Rót ra ly, thêm đá và thưởng thức</li>
+										<li>Có thể thêm đường, mật ong, hoặc các loại syrup khác để tăng độ ngọt</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="cultivars" class="cultivars">
+				<div class="container">
+					<h2 class="section-title">Giống Trà</h2>
+					<p class="cultivars-intro">
+						Hiện nay, Nhật Bản có hơn 100 <em>cultivar</em> (giống trà) khác nhau được đăng ký chính thức nhưng chỉ khoảng 7-8 giống phổ biến và được sử dụng rộng rãi trong sản xuất
+						matcha:
+					</p>
+
+					<div class="cultivars-grid">
+						<div class="cultivar-card">
+							<div class="cultivar-header">
+								<h3>Yabukita</h3>
+							</div>
+							<div class="cultivar-image">
+								<img src="images/cultivar/Yabukita.jpg" alt="Yabukita Matcha" />
+							</div>
+							<div class="cultivar-content">
+								<p class="cultivar-description">Giống phổ biến nhất, năng suất cao, trồng ở các tỉnh Shizuoka, Kagoshima.</p>
+								<div class="cultivar-product">
+									<span>Japanese Yabukita Single Cultivar Matcha - Ochaandco</span>
+								</div>
+							</div>
+						</div>
+						<div class="cultivar-card">
+							<div class="cultivar-header">
+								<h3>Okumidori</h3>
+							</div>
+							<div class="cultivar-image">
+								<img src="images/cultivar/okumidori.jpg" alt="Okumidori Matcha" />
+							</div>
+							<div class="cultivar-content">
+								<p class="cultivar-description">Có màu xanh đậm mịn, vị dịu, ngọt hậu nhẹ nhàng. Trồng chủ yếu ở các vùng khí hậu ấm áp như Kagoshima, Uji (Kyoto).</p>
+								<div class="cultivar-product">
+									<span>Okumidori Single Cultivar Matcha - Inucha</span>
+								</div>
+							</div>
+						</div>
+						<div class="cultivar-card">
+							<div class="cultivar-header">
+								<h3>Samidori</h3>
+							</div>
+							<div class="cultivar-image">
+								<img src="images/cultivar/Samidori Matcha.jpg" alt="Samidori Matcha" />
+							</div>
+							<div class="cultivar-content">
+								<p class="cultivar-description">Thường dùng trong trà đạo, màu xanh vừa đến đậm, hương cỏ non. Thường trồng ở Uji (Kyoto).</p>
+								<div class="cultivar-product">
+									<span>Samidori Matcha - Yamamasa Koyamaen</span>
+								</div>
+							</div>
+						</div>
+						<div class="cultivar-card">
+							<div class="cultivar-header">
+								<h3>Asahi</h3>
+							</div>
+							<div class="cultivar-image">
+								<img src="images/cultivar/ASAHI MATCHA.jpg" alt="Asahi Matcha" />
+							</div>
+							<div class="cultivar-content">
+								<p class="cultivar-description">Khá hiếm, có màu xanh đậm, có vị béo, rất ít đắng. Trồng ở Uji, Yame (Fukuoka).</p>
+								<div class="cultivar-product">
+									<span>Asahi Matcha - Tsuji San</span>
+								</div>
+							</div>
+						</div>
+						<div class="cultivar-card">
+							<div class="cultivar-header">
+								<h3>Uji Hikari</h3>
+							</div>
+							<div class="cultivar-image">
+								<img src="images/cultivar/Inucha_Uji.jpg" alt="Uji Hikari Matcha" />
+							</div>
+							<div class="cultivar-content">
+								<p class="cultivar-description">Giống quý, phù hợp làm <em>koicha</em>, có màu xanh sáng tự nhiên, vị thanh, ngọt, hương hoa cỏ. Chủ yếu trồng ở Uji (Kyoto).</p>
+								<div class="cultivar-product">
+									<span>Uji Hikari Matcha - Inucha</span>
+								</div>
+							</div>
+						</div>
+						<div class="cultivar-card">
+							<div class="cultivar-header">
+								<h3>Gokou</h3>
+							</div>
+							<div class="cultivar-image">
+								<img src="images/cultivar/Gokou.jpg" alt="Gokou Matcha" />
+							</div>
+							<div class="cultivar-content">
+								<p class="cultivar-description">Xanh rêu đậm, ngọt hậu, đậm vị, phù hợp làm <em>koicha</em>, đặc sản vùng Uji, Kyotanabe (Kyoto).</p>
+								<div class="cultivar-product">
+									<span>Gokou Single Cultivar Matcha - Mizuba Tea</span>
+								</div>
+							</div>
+						</div>
+						<div class="cultivar-card">
+							<div class="cultivar-header">
+								<h3>Saemidori</h3>
+							</div>
+							<div class="cultivar-image">
+								<img src="images/cultivar/Saemidori.jpg" alt="Saemidori Matcha" />
+							</div>
+							<div class="cultivar-content">
+								<p class="cultivar-description">Xanh sáng tươi, vị ngọt, mượt mà, ít đắng. Trồng chủ yếu ở Kagoshima, Miyazaki.</p>
+								<div class="cultivar-product">
+									<span>Yame Saemidori Matcha – Hawa Matcha</span>
+								</div>
+							</div>
+						</div>
+						<div class="cultivar-card">
+							<div class="cultivar-header">
+								<h3>Wakatake</h3>
+							</div>
+							<div class="cultivar-image">
+								<img src="images/cultivar/Wakatake.jpg" alt="Wakatake Matcha" />
+							</div>
+							<div class="cultivar-content">
+								<p class="cultivar-description">
+									Thường ở hạng <em>culinary</em>, hạng <em>ceremony</em> rất hiếm và dùng cho trà <em>artisan</em>, vị nhẹ, thanh, tươi mới. Chủ yếu trồng tại Uji.
+								</p>
+								<div class="cultivar-product">
+									<span>Wakatake Matcha - Marukyu Koyamaen</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="effects" class="effects">
+				<div class="container">
+					<h2 class="section-title">Tác Dụng</h2>
+
+					<div class="effects-wrapper">
+						<div class="effects-category benefits">
+							<h3><i class="fas fa-heart"></i> Lợi Ích Về Sức Khỏe</h3>
+							<ul class="effects-list">
+								<li><span class="effect-highlight">Chứa EGCG</span> – hoạt chất chống oxy hóa mạnh nhất.</li>
+								<li><span class="effect-highlight">Caffeine</span>: Giúp tăng tỉnh táo, cải thiện sức mạnh cơ bắp, hỗ trợ giảm mỡ và BMI.</li>
+								<li><span class="effect-highlight">L-theanine</span>: Một axit amin giúp thư giãn, giảm stress, và khi kết hợp với caffeine sẽ tăng đáng kể khả năng nhận thức.</li>
+								<li>
+									<span class="effect-note">Đặc biệt</span>, matcha khác với trà xanh pha thông thường vì bạn tiêu thụ toàn bộ lá trà nghiền, do đó hấp thụ cả chất hòa tan và không
+									hòa tan như chất xơ, catechin, theanine và caffeine – đem lại tác động mạnh mẽ hơn.
+								</li>
+							</ul>
+						</div>
+
+						<div class="effects-category side-effects">
+							<h3><i class="fas fa-exclamation-triangle"></i> Các Tác Dụng Phụ</h3>
+							<ul class="effects-list">
+								<li><span class="effect-highlight">Caffeine cao</span> hơn trà thông thường có thể gây mất ngủ, lo lắng, bồn chồn, tăng nhịp tim, hồi hộp.</li>
+								<li>Uống matcha vào <span class="effect-highlight">buổi chiều hoặc tối</span> có thể gây khó ngủ, đặc biệt với người có giấc ngủ nhạy cảm.</li>
+								<li>
+									Dùng matcha với <span class="effect-highlight">liều cao lâu dài</span> (quá nhiều ly/ngày) có thể ảnh hưởng đến khả năng hấp thu sắt từ thực phẩm do chứa tannin và
+									gây gánh nặng cho gan nếu tiêu thụ quá mức, nhất là dưới dạng thực phẩm chức năng đậm đặc.
+								</li>
+							</ul>
+						</div>
+
+						<div class="effects-category recommendations">
+							<h3><i class="fas fa-clipboard-list"></i> Khuyến Cáo Về Cách Sử Dụng</h3>
+							<ul class="effects-list">
+								<li>Nên dùng <span class="effect-highlight">lượng vừa phải</span> và không quá 5g matcha mỗi ngày.</li>
+								<li><span class="effect-highlight">Không dùng</span> cho người có bệnh tim mạch.</li>
+								<li>
+									Tránh kết hợp matcha với <span class="effect-highlight">quá nhiều đường, kem sữa</span> hay dùng trong tráng miệng nhiều béo/ngọt — vì điều này vô hiệu hóa lợi ích
+									sức khỏe.
+								</li>
+							</ul>
+							<div class="effects-conclusion">
+								<p><i class="fas fa-arrow-right"></i> Matcha không phải là thần dược và không thể thay thế cho một lối sống lành mạnh.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Temporarily disabled What People Say section
 			<section id="testimonials" class="testimonials">
 				<div class="container">
-					<h2 class="section-title">What People Say</h2>
+					<h2 class="section-title">Đánh Giá Từ Khách Hàng</h2>
 					<div class="testimonial-slider">
 						<div class="testimonial-slide">
 							<div class="testimonial-content">
@@ -154,14 +678,14 @@
 						<span class="dot" data-slide="2"></span>
 					</div>
 				</div>
-			</section>
-
+			</section>			-->
+			<!-- Temporarily disabled Contact section
 			<section id="contact" class="contact">
 				<div class="container">
-					<h2 class="section-title">Contact Us</h2>
+					<h2 class="section-title">Liên Hệ</h2>
 					<div class="contact-wrapper">
 						<div class="contact-info">
-							<p>Have questions about matcha? We'd love to hear from you!</p>
+							<p>Bạn có câu hỏi về matcha? Chúng tôi rất vui được nghe từ bạn!</p>
 							<div class="contact-details">
 								<div class="contact-item">
 									<i class="fas fa-map-marker-alt"></i>
@@ -185,7 +709,7 @@
 						<div class="contact-form">
 							<form id="contactForm">
 								<div class="form-group">
-									<label for="name">Name</label>
+									<label for="name">Tên</label>
 									<input type="text" id="name" name="name" required />
 								</div>
 								<div class="form-group">
@@ -193,47 +717,47 @@
 									<input type="email" id="email" name="email" required />
 								</div>
 								<div class="form-group">
-									<label for="message">Message</label>
+									<label for="message">Tin Nhắn</label>
 									<textarea id="message" name="message" required></textarea>
 								</div>
-								<button type="submit" class="btn btn-primary">Send Message</button>
+								<button type="submit" class="btn btn-primary">Gửi Tin Nhắn</button>
 							</form>
 						</div>
 					</div>
 				</div>
 			</section>
+			-->
 		</main>
-
 		<footer class="footer">
 			<div class="container">
 				<div class="footer-top">
 					<div class="footer-info">
 						<h3>Matcha Experience</h3>
-						<p>Bringing the best of matcha to your cup.</p>
-					</div>
-					<div class="footer-links">
-						<div class="footer-nav">
-							<h4>Quick Links</h4>
-							<ul>
-								<li><a href="#home">Home</a></li>
-								<li><a href="#about">About</a></li>
-								<li><a href="#benefits">Benefits</a></li>
-								<li><a href="#testimonials">Testimonials</a></li>
-								<li><a href="#contact">Contact</a></li>
-							</ul>
-						</div>
-						<div class="footer-social">
-							<h4>Follow Us</h4>
-							<div class="social-icons">
-								<a href="#"><i class="fab fa-facebook"></i></a>
-								<a href="#"><i class="fab fa-instagram"></i></a>
-								<a href="#"><i class="fab fa-twitter"></i></a>
+						<p>Mang tinh hoa của matcha đến tách trà của bạn.</p>
+						<div class="footer-contact-info">
+							<div class="contact-item">
+								<i class="fas fa-envelope"></i>
+								<p>webmatcha@gmail.com</p>
 							</div>
+							<div class="contact-item">
+								<i class="fas fa-map-marker-alt"></i>
+								<p>10-12 Đinh Tiên Hoàng, Đa Kao, Quận 1, TP.HCM</p>
+							</div>
+						</div>
+					</div>
+					<div class="footer-social-wrapper">
+						<h4>Theo Dõi Chúng Tôi</h4>
+						<div class="social-icons">
+							<a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+							<a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+							<a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+							<a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+							<a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="footer-bottom">
-					<p>&copy; 2025 Matcha Experience. All rights reserved.</p>
+					<p>&copy; 2025 Matcha Experience. Đã đăng ký bản quyền.</p>
 				</div>
 			</div>
 		</footer>
@@ -241,5 +765,6 @@
 		<a href="#" id="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></a>
 
 		<script src="js/script.js"></script>
+		<script src="js/navbar.js"></script>
 	</body>
 </html>

@@ -25,7 +25,7 @@ html {
 }
 
 body {
-	font-family: "Poppins", sans-serif;
+	font-family: "Roboto", "Noto Sans", sans-serif;
 	line-height: 1.6;
 	color: var(--text-color);
 	background-color: var(--white);
@@ -72,7 +72,7 @@ ul {
 }
 
 button {
-	font-family: "Poppins", sans-serif;
+	font-family: "Roboto", "Noto Sans", sans-serif;
 }
 
 /* Header & Navigation */
@@ -707,7 +707,7 @@ main {
 	padding: 0.8rem;
 	border: 1px solid #ddd;
 	border-radius: 5px;
-	font-family: "Poppins", sans-serif;
+	font-family: "Roboto", "Noto Sans", sans-serif;
 }
 
 .form-group input:focus,

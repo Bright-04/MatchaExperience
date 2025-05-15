@@ -9,6 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
 		}, 500);
 	}
 
+	// Animate quick navigation items
+	const quickNavItems = document.querySelectorAll(".quick-nav-item");
+	quickNavItems.forEach((item, index) => {
+		item.style.opacity = "0";
+		item.style.transform = "translateY(20px)";
+		setTimeout(() => {
+			item.style.transition = "opacity 0.4s ease, transform 0.4s ease, background-color 0.3s, color 0.3s, box-shadow 0.3s";
+			item.style.opacity = "1";
+			item.style.transform = "translateY(0)";
+		}, 500 + index * 100); // Staggered animation
+	});
+
 	// Mobile Navigation Toggle
 	const navToggle = document.querySelector(".nav-toggle");
 	const navMenu = document.querySelector(".nav-menu");
@@ -39,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			body.classList.remove("no-scroll");
 		});
 	});
-
 	// Active link highlighting on scroll
 	function highlightActiveLink() {
 		const sections = document.querySelectorAll("section");
@@ -55,6 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
 					link.classList.remove("active");
 					if (link.getAttribute("href") === `#${sectionId}`) {
 						link.classList.add("active");
+					}
+				});
+
+				// Also highlight quick navigation items
+				document.querySelectorAll(".quick-nav-item").forEach((item) => {
+					item.classList.remove("active");
+					if (item.getAttribute("href") === `#${sectionId}`) {
+						item.classList.add("active");
 					}
 				});
 			}

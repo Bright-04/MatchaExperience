@@ -1224,8 +1224,8 @@ main {
 
 .recipe-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 2.5rem;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 2rem;
 }
 
 .recipe-card {
@@ -1236,6 +1236,7 @@ main {
 	transition: var(--transition);
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 }
 
 .recipe-card:hover {
@@ -1261,7 +1262,7 @@ main {
 }
 
 .recipe-image {
-	height: 200px;
+	height: 180px;
 	overflow: hidden;
 }
 
@@ -1281,6 +1282,7 @@ main {
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
+	font-size: 0.95rem;
 }
 
 .recipe-features {
@@ -1331,6 +1333,12 @@ main {
 }
 
 /* Media Queries for Recipes Section */
+@media (max-width: 1200px) {
+	.recipe-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
 @media (max-width: 768px) {
 	.recipe-grid {
 		grid-template-columns: 1fr;

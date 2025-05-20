@@ -1,129 +1,57 @@
-# 🍵 Matcha Experience Website
+# Matcha Experience
 
-A modern, responsive website dedicated to showcasing the rich history, varieties, and benefits of matcha green tea in Vietnamese culture.
+A comprehensive website showcasing the world of matcha, including its history, cultivars, and products.
 
-## 🌟 About
+## Features
 
-Matcha Experience is an educational platform designed to provide comprehensive information about matcha, from its ancient origins to modern preparation methods. The site serves as a resource for both matcha enthusiasts and newcomers, with a focus on Vietnamese appreciation of this traditional Japanese tea.
+-   **Responsive Design**: Optimized for all devices, from mobile to desktop
+-   **Modern UI**: Built with Next.js and Tailwind CSS for a sleek, contemporary look
+-   **Fast Performance**: Optimized image loading and rendering
+-   **Multi-page Structure**: Organized content across multiple pages/routes
+-   **SEO-friendly**: Built with best practices for search engine optimization
 
-## 📚 Content Sections
+## Pages
 
-The website features several key content sections:
+-   **Home**: Introduction to the matcha experience with featured products
+-   **History**: Timeline of matcha's journey from China to Japan and worldwide
+-   **Cultivars**: Detailed information about different matcha tea plant varieties
+-   **Products**: Selection of premium matcha powders and related items
 
-### 🏡 Home
+## Getting Started
 
-An engaging introduction to matcha with a captivating video showcase of matcha preparation.
+First, run the development server:
 
-### 📜 History & Origin
-
-Explores the rich historical journey of matcha from China to Japan and its global spread, including:
-
--   Timeline from the 7th century to modern day
--   Detailed traditional production process with illustrations
-
-### 🏆 Tiers of Matcha
-
-Educational breakdown of matcha quality categories:
-
--   **Ceremonial Grade**: Highest quality for traditional ceremonies
--   **Premium Grade**: High-quality for daily consumption
--   **Culinary Grade**: Designed for cooking and baking
-
-### 🥄 Recipes
-
-Collection of preparation methods:
-
--   Traditional Usucha (thin tea)
--   Matcha Latte fusion
--   London Fog variations
--   Cold-whisked modern techniques
-
-### 🌱 Cultivars
-
-Showcase of different matcha plant varieties:
-
--   Yabukita, Okumidori, Samidori, Asahi
--   Uji Hikari, Gokou, Saemidori, Wakatake
--   Details on flavor profiles and growing regions
-
-### ❤️ Health Effects
-
-Evidence-based information on matcha benefits and considerations:
-
--   Health benefits with EGCG, caffeine, and L-theanine
--   Potential side effects
--   Usage recommendations
-
-## 🔧 Technical Features
-
-### 💻 Technologies Used
-
--   HTML5
--   CSS3 (Flexbox, CSS Grid, CSS Variables, Animations)
--   JavaScript (DOM manipulation, Event handling)
--   Font Awesome icons
--   Google Fonts (Roboto, Noto Sans)
--   Responsive design principles
-
-### 📱 Responsive Design
-
-The website is fully responsive with:
-
--   Desktop optimization
--   Tablet-friendly layouts
--   Mobile-first approach for smaller screens
--   Hamburger menu for mobile navigation
-
-### ✨ User Experience
-
--   Smooth scrolling navigation
--   Page loading animations with preloader
--   Reveal animations as you scroll
--   Interactive elements throughout
--   Back-to-top button for easy navigation
-
-### 🎨 Visual Design
-
--   Carefully selected green color palette reflecting matcha tones
--   Clean, modern aesthetic with attention to typography
--   High-quality imagery of matcha production and preparation
--   Consistent visual language throughout the site
-
-## 📁 Project Structure
-
-```
-📦 MatchaExperience
- ┣ 📜 index.html          # Main HTML document
- ┣ 📜 README.md           # Project documentation
- ┣ 📂 css/                # Stylesheet directory
- ┃ ┣ 📜 main.css          # Main CSS styles
- ┃ ┣ 📜 cultivars.css     # Styles for cultivars section
- ┃ ┣ 📜 history.css       # Styles for history section
- ┃ ┗ 📜 footer-responsive.css # Mobile-specific footer styles
- ┣ 📂 images/             # Image assets
- ┃ ┣ 📜 matcha-pattern.png
- ┃ ┣ 📜 bowl-of-matcha-horz.jpg
- ┃ ┣ 📜 bowl-of-matcha-vertical.jpg
- ┃ ┣ 📜 cup-of-matcha-vertical.jpg
- ┃ ┗ 📜 [additional images...]
- ┗ 📂 js/                 # JavaScript files
-   ┣ 📜 script.js         # Main JavaScript functionality
-   ┗ 📜 navbar.js         # Navigation functionality
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-## 🚀 How to Use
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-1. Clone or download this repository
-2. Open `index.html` in your web browser
-3. Navigate through sections using the top menu
+## Technologies Used
 
-## 📞 Contact
+-   Next.js 14+ (App Router)
+-   TypeScript
+-   Tailwind CSS
+-   React 18+
+-   Next Image Optimization
+-   Google Fonts (Playfair Display, Noto Sans)
 
-For inquiries about this project:
+## Learn More
 
--   Email: webmatcha@gmail.com
--   Address: 10-12 Đinh Tiên Hoàng, Đa Kao, Quận 1, TP.HCM
+To learn more about Next.js, take a look at the following resources:
 
-## 📝 License
+-   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+-   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-© 2025 Matcha Experience. All rights reserved.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+

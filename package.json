@@ -1,0 +1,30 @@
+{
+	"name": "matcha-experience",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"clean": "rimraf .next out",
+		"clean:build": "npm run clean && npm run build"
+	},
+	"dependencies": {
+		"next": "^14.2.28",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^2.1.4",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"autoprefixer": "^10.4.16",
+		"eslint": "^8.56.0",
+		"eslint-config-next": "14.1.0",
+		"postcss": "^8.4.32",
+		"tailwindcss": "^3.4.0",
+		"typescript": "^5"
+	}
+}

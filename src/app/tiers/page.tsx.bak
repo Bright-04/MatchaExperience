@@ -1,0 +1,192 @@
+"use client";
+
+import React, { useState } from "react";
+import type { Metadata } from "next";
+import { motion } from "framer-motion";
+
+export const metadata: Metadata = {
+	title: "Matcha Tiers | Matcha Experience",
+	description: "Learn about the different grades and tiers of matcha tea, from ceremonial to culinary grade.",
+};
+
+const fadeIn = {
+	hidden: { opacity: 0, y: 20 },
+	visible: (i: number) => ({
+		opacity: 1,
+		y: 0,
+		transition: {
+			delay: i * 0.1,
+			duration: 0.5,
+		},
+	}),
+};
+
+const tiers = [
+	{
+		title: "Ceremonial Grade",
+		description:
+			"The highest quality matcha, made from the youngest tea leaves with the stems and veins removed. This grade is used in traditional tea ceremonies and is characterized by its vibrant green color and smooth, subtle flavor.",
+		features: ["Bright, vivid green color", "Sweet, delicate taste", "No bitterness", "Premium price point"],
+		color: "from-primary-light/30 to-primary/20",
+		borderColor: "border-primary-light/50",
+		iconColor: "text-primary",
+		badge: "Premium",
+		badgeColor: "bg-accent text-white",
+	},
+	{
+		title: "Premium Grade",
+		description: "High-quality matcha suitable for daily drinking. While not as refined as ceremonial grade, it offers excellent flavor and color at a more accessible price point.",
+		features: ["Bright green color", "Fresh, balanced taste", "Slight natural sweetness", "Good value for daily use"],
+		color: "from-primary-light/20 to-primary/10",
+		borderColor: "border-primary-light/40",
+		iconColor: "text-primary",
+		badge: "Popular",
+		badgeColor: "bg-secondary text-white",
+	},
+	{
+		title: "Culinary Grade",
+		description: "Specifically designed for cooking and baking. This grade has a stronger flavor that holds up well when mixed with other ingredients.",
+		features: ["Darker green color", "Robust flavor", "More bitter notes", "Economical choice for recipes"],
+		color: "from-primary-light/10 to-primary/5",
+		borderColor: "border-primary-light/30",
+		iconColor: "text-primary",
+		badge: "Versatile",
+		badgeColor: "bg-primary text-white",
+	},
+];
+
+export default function TiersPage() {
+	const [selectedTier, setSelectedTier] = useState<number | null>(null);
+
+	return (
+		<div className="flex flex-col items-center">
+			<div className="hero w-full py-16 px-4 sm:px-6 lg:px-8 text-center">
+				<div className="max-w-7xl mx-auto">
+					<motion.h1 
+						initial={{ opacity: 0, y: -20 }} 
+						animate={{ opacity: 1, y: 0 }} 
+						transition={{ duration: 0.6 }} 
+						className="text-4xl md:text-5xl font-bold text-primary-dark dark:text-primary-light mb-4 font-serif"
+					>
+						Matcha Tea Grades
+					</motion.h1>
+					<motion.p
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ delay: 0.2, duration: 0.6 }}
+						className="text-xl text-primary-dark/80 dark:text-primary-light/80 mb-8 max-w-3xl mx-auto"
+					>
+						Different grades of matcha are suited for different purposes, from traditional ceremonies to everyday cooking.
+					</motion.p>
+				</div>
+			</div>
+
+			<div className="w-full py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0d2321]">
+				<div className="max-w-7xl mx-auto">
+					<div className="grid gap-8 md:grid-cols-3">
+						{tiers.map((tier, index) => (
+							<motion.div
+								key={tier.title}
+								custom={index}
+								initial="hidden"
+								animate="visible"
+								variants={fadeIn}
+								onClick={() => setSelectedTier(index === selectedTier ? null : index)}
+								className={`${
+									selectedTier === index ? "ring-2 ring-accent transform scale-105 z-10" : "hover:shadow-xl hover:-translate-y-1 transform transition duration-300"
+								} relative overflow-hidden rounded-xl bg-gradient-to-br ${tier.color} backdrop-blur-sm glass-card border ${
+									tier.borderColor
+								} p-8 cursor-pointer transition-all duration-300 dark:bg-primary-dark/30 dark:border-primary/20`}
+							>
+								{/* Badge */}
+								<div className={`absolute top-4 right-4 ${tier.badgeColor} px-3 py-1 rounded-full text-xs font-medium`}>{tier.badge}</div>
+								<h2 className="text-2xl font-serif font-semibold text-primary-dark dark:text-primary-light mb-4">{tier.title}</h2>
+								<p className="text-primary-dark/80 dark:text-primary-light/80 mb-6 text-sm md:text-base">{tier.description}</p>
+								<ul className="space-y-2">
+									{tier.features.map((feature, i) => (
+										<li key={i} className="flex items-start space-x-2">
+											<svg className={`w-5 h-5 ${tier.iconColor} dark:text-primary-light flex-shrink-0 mt-0.5`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+											</svg>
+											<span className="text-primary-dark/80 dark:text-primary-light/80 text-sm md:text-base">{feature}</span>
+										</li>
+									))}
+								</ul>
+								<div className="mt-6">
+									<button
+										className={`w-full py-2.5 px-4 rounded-lg font-medium text-white transition-all duration-300 ${
+											index === 0 ? "bg-accent hover:bg-accent-dark" : index === 1 ? "bg-secondary hover:bg-secondary-dark" : "bg-primary hover:bg-primary-dark"
+										} shadow-sm hover:shadow-md transform hover:-translate-y-0.5`}
+									>
+										Select {tier.title}
+									</button>
+								</div>
+								{selectedTier === index && (
+									<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="mt-6 pt-4 border-t border-primary-light/30 dark:border-primary/30">
+										<p className="text-sm text-primary-dark/80 dark:text-primary-light/80">
+											{index === 0 && "Our ceremonial grade matcha is sourced from Uji, Japan and is perfect for traditional tea ceremonies and meditative drinking experiences."}
+											{index === 1 && "Premium grade matcha offers an excellent balance of flavor and affordability, making it perfect for daily matcha lattes and smoothies."}
+											{index === 2 && "Culinary grade matcha stands up well to mixing with other ingredients, and is ideal for baking, cooking, and creative culinary applications."}
+										</p>
+									</motion.div>
+								)}
+							</motion.div>
+						))}
+					</div>
+
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ delay: 0.8, duration: 0.6 }}
+						className="mt-16 p-8 rounded-xl bg-gradient-to-br from-primary-light/10 to-primary-light/5 dark:from-primary-dark/30 dark:to-primary-dark/20 border border-primary/20 shadow-soft"
+					>
+						<div className="flex flex-col md:flex-row md:items-center gap-6">
+							<div className="md:w-1/4">
+								<div className="bg-primary/10 dark:bg-primary/20 p-4 rounded-lg border border-primary/20 flex items-center justify-center">
+									<svg className="w-16 h-16 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											strokeWidth="1.5"
+											d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+										></path>
+									</svg>
+								</div>
+							</div>
+							<div className="md:w-3/4">
+								<h3 className="text-2xl font-serif font-semibold text-primary-dark dark:text-primary-light mb-3">The Perfect Match</h3>
+								<p className="text-primary-dark/80 dark:text-primary-light/80 mb-4">Not sure which grade is right for you? Consider how you plan to use your matcha:</p>
+
+								<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+									<div className="bg-white dark:bg-primary-dark/40 p-4 rounded-lg shadow-sm">
+										<div className="flex items-center mb-2">
+											<div className="w-3 h-3 rounded-full bg-accent mr-2"></div>
+											<h4 className="font-medium text-primary-dark dark:text-primary-light">Ceremonial</h4>
+										</div>
+										<p className="text-sm text-primary-dark/80 dark:text-primary-light/80">For pure tea drinking experiences and traditional ceremonies</p>
+									</div>
+
+									<div className="bg-white dark:bg-primary-dark/40 p-4 rounded-lg shadow-sm">
+										<div className="flex items-center mb-2">
+											<div className="w-3 h-3 rounded-full bg-secondary mr-2"></div>
+											<h4 className="font-medium text-primary-dark dark:text-primary-light">Premium</h4>
+										</div>
+										<p className="text-sm text-primary-dark/80 dark:text-primary-light/80">For daily matcha lattes and light culinary applications</p>
+									</div>
+
+									<div className="bg-white dark:bg-primary-dark/40 p-4 rounded-lg shadow-sm">
+										<div className="flex items-center mb-2">
+											<div className="w-3 h-3 rounded-full bg-primary mr-2"></div>
+											<h4 className="font-medium text-primary-dark dark:text-primary-light">Culinary</h4>
+										</div>
+										<p className="text-sm text-primary-dark/80 dark:text-primary-light/80">For baking, cooking and creative culinary recipes</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</motion.div>
+				</div>
+			</div>
+		</div>
+	);
+}

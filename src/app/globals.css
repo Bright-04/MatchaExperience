@@ -5,10 +5,15 @@
 :root {
 	--background: #ffffff;
 	--foreground: #171717;
-	--primary: #4d7c50;
-	--primary-dark: #36563a;
-	--primary-light: #b6cfba;
-	--accent: #e3b63a;
+	--primary: #2a9d8f;
+	--primary-dark: #207b71;
+	--primary-light: #8fe0d6;
+	--accent: #f4a261;
+	--secondary: #e76f51;
+	--neutral-50: #f8fafc;
+	--neutral-100: #f1f5f9;
+	--neutral-200: #e2e8f0;
+	--neutral-300: #cbd5e1;
 }
 
 @theme inline {
@@ -18,25 +23,31 @@
 	--color-primary-dark: var(--primary-dark);
 	--color-primary-light: var(--primary-light);
 	--color-accent: var(--accent);
-	--font-serif: var(--font-playfair);
-	--font-sans: var(--font-noto-sans);
+	--color-secondary: var(--secondary);
+	--font-serif: var(--font-fraunces);
+	--font-sans: var(--font-inter);
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--background: #0f170f;
+		--background: #0d2321;
 		--foreground: #f4f8f4;
-		--primary: #5b8f5f;
-		--primary-dark: #3f613f;
-		--primary-light: #c4d8c4;
-		--accent: #ffd054;
+		--primary: #40b4a6;
+		--primary-dark: #318c81;
+		--primary-light: #9eeae1;
+		--accent: #f7b989;
+		--secondary: #eb8a72;
+		--neutral-50: #0e1316;
+		--neutral-100: #151a1f;
+		--neutral-200: #1c2428;
+		--neutral-300: #2a343a;
 	}
 }
 
 body {
 	background: var(--background);
 	color: var(--foreground);
-	font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+	font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 h1,
@@ -47,6 +58,37 @@ h5,
 h6 {
 	font-family: var(--font-serif), Georgia, "Times New Roman", serif;
 	color: var(--primary-dark);
+	font-weight: 600;
+}
+
+/* Custom utility classes */
+.glass-card {
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-soft {
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+}
+
+/* Animation utilities */
+.animation-delay-100 {
+	animation-delay: 100ms;
+}
+
+.animation-delay-300 {
+	animation-delay: 300ms;
+}
+
+.animation-delay-500 {
+	animation-delay: 500ms;
+}
+
+.animation-delay-700 {
+	animation-delay: 700ms;
 }
 
 .hero {

@@ -1,30 +1,36 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
+	darkMode: "class",
 	theme: {
 		extend: {
 			colors: {
 				green: {
-					50: "#F2F7F2",
-					100: "#E6F0E6",
-					200: "#C4D8C4",
-					300: "#A3C1A3",
-					400: "#82AB82",
-					500: "#619561",
-					600: "#4D7C50",
-					700: "#36563A",
-					800: "#25382B",
-					900: "#0F170F",
+					50: "#e6f5f3",
+					100: "#c2e8e4",
+					200: "#8fe0d6",
+					300: "#5dcdc2",
+					400: "#40b4a6",
+					500: "#2a9d8f",
+					600: "#207b71",
+					700: "#175853",
+					800: "#113e3a",
+					900: "#0d2321",
 				},
 				accent: {
-					light: "#FFD054",
-					DEFAULT: "#E3B63A",
-					dark: "#C79B28",
+					light: "#f7b989",
+					DEFAULT: "#f4a261",
+					dark: "#e18f48",
+				},
+				secondary: {
+					light: "#eb8a72",
+					DEFAULT: "#e76f51",
+					dark: "#d85638",
 				},
 			},
 			fontFamily: {
-				serif: ["var(--font-playfair)", "Georgia", "serif"],
-				sans: ["var(--font-noto-sans)", "Arial", "sans-serif"],
+				serif: ["var(--font-fraunces)", "Georgia", "serif"],
+				sans: ["var(--font-inter)", "system-ui", "sans-serif"],
 			},
 			backgroundImage: {
 				"matcha-pattern": "url('/images/matcha-pattern.png')",

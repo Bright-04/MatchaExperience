@@ -4,10 +4,26 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isScrolled, setIsScrolled] = useState(false);
 	const pathname = usePathname();
+
+	// Handle scroll events to change navbar appearance
+	useEffect(() => {
+		const handleScroll = () => {
+			if (window.scrollY > 60) {
+				setIsScrolled(true);
+			} else {
+				setIsScrolled(false);
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 
 	// Close mobile menu when path changes
 	useEffect(() => {
@@ -22,47 +38,50 @@ export default function Navbar() {
 	};
 
 	const getLinkClassName = (path: string) => {
-		return `inline-flex items-center px-1 pt-1 border-b-2 ${
-			isActive(path) ? "border-green-500 text-sm font-medium text-green-900" : "border-transparent text-sm font-medium text-green-600 hover:text-green-800 hover:border-green-300"
+		return `inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+			isActive(path)
+				? "bg-primary-light/20 dark:bg-primary/30 text-primary-dark dark:text-primary-light"
+				: "text-primary-dark dark:text-primary-light hover:bg-primary-light/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-white"
 		}`;
 	};
 
 	return (
-		<nav className="bg-green-50 border-b border-green-100 sticky top-0 z-50">
+		<nav className={`${isScrolled ? "py-2 bg-white/90 dark:bg-[#0d2321]/90 shadow-md backdrop-blur-sm" : "py-4 bg-white dark:bg-[#0d2321]"} sticky top-0 z-50 transition-all duration-300`}>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex justify-between h-16">
-					<div className="flex">
-						<div className="flex-shrink-0 flex items-center">
-							<Link href="/" className="text-xl font-semibold text-green-800">
-								Matcha Experience
-							</Link>
+				<div className="flex justify-between items-center">
+					<div className="flex items-center">
+						<Link href="/" className="flex items-center">
+							<div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-3">M</div>
+							<span className="text-xl font-serif font-semibold text-primary-dark dark:text-primary-light">Matcha Experience</span>
+						</Link>
+					</div>{" "}
+					<div className="hidden md:flex md:items-center md:space-x-2">
+						<Link href="/" className={getLinkClassName("/")}>
+							Home
+						</Link>
+						<Link href="/history" className={getLinkClassName("/history")}>
+							History
+						</Link>
+						<Link href="/tiers" className={getLinkClassName("/tiers")}>
+							Grades
+						</Link>
+						<Link href="/products" className={getLinkClassName("/products")}>
+							Recipes
+						</Link>
+						<Link href="/cultivars" className={getLinkClassName("/cultivars")}>
+							Cultivars
+						</Link>
+						<Link href="/effects" className={getLinkClassName("/effects")}>
+							Benefits
+						</Link>
+						<div className="ml-2">
+							<ThemeToggle />
 						</div>
-						<div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-							<Link href="/" className={getLinkClassName("/")}>
-								Trang Chủ
-							</Link>
-							<Link href="/history" className={getLinkClassName("/history")}>
-								Lịch Sử
-							</Link>
-							<Link href="/tiers" className={getLinkClassName("/tiers")}>
-								Phân Hạng
-							</Link>
-							<Link href="/products" className={getLinkClassName("/products")}>
-								Công Thức
-							</Link>
-							<Link href="/cultivars" className={getLinkClassName("/cultivars")}>
-								Giống Trà
-							</Link>
-							<Link href="/effects" className={getLinkClassName("/effects")}>
-								Tác Dụng
-							</Link>
-						</div>
-					</div>
-
+					</div>{" "}
 					<div className="-mr-2 flex items-center sm:hidden">
 						<button
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
-							className="inline-flex items-center justify-center p-2 rounded-md text-green-700 hover:text-green-900 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
+							className="inline-flex items-center justify-center p-2 rounded-md text-primary-dark dark:text-primary-light hover:text-primary-dark hover:bg-primary-light/20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
 						>
 							<span className="sr-only">Open main menu</span>
 							{isMenuOpen ? (
@@ -87,62 +106,66 @@ export default function Navbar() {
 							href="/"
 							className={`block pl-3 pr-4 py-2 border-l-4 ${
 								isActive("/")
-									? "bg-green-100 border-green-500 text-base font-medium text-green-900"
-									: "border-transparent text-base font-medium text-green-700 hover:bg-green-50 hover:border-green-300 hover:text-green-800"
+									? "bg-primary-light/20 border-primary text-base font-medium text-primary-dark dark:text-primary-light dark:bg-primary/20"
+									: "border-transparent text-base font-medium text-primary-dark dark:text-primary-light hover:bg-primary-light/10 dark:hover:bg-primary/10 hover:border-primary-light hover:text-primary-dark"
 							}`}
 						>
-							Trang Chủ
+							Home
 						</Link>
 						<Link
 							href="/history"
 							className={`block pl-3 pr-4 py-2 border-l-4 ${
 								isActive("/history")
-									? "bg-green-100 border-green-500 text-base font-medium text-green-900"
-									: "border-transparent text-base font-medium text-green-700 hover:bg-green-50 hover:border-green-300 hover:text-green-800"
+									? "bg-primary-light/20 border-primary text-base font-medium text-primary-dark dark:text-primary-light dark:bg-primary/20"
+									: "border-transparent text-base font-medium text-primary-dark dark:text-primary-light hover:bg-primary-light/10 dark:hover:bg-primary/10 hover:border-primary-light hover:text-primary-dark"
 							}`}
 						>
-							Lịch Sử
+							History
 						</Link>
 						<Link
 							href="/tiers"
 							className={`block pl-3 pr-4 py-2 border-l-4 ${
 								isActive("/tiers")
-									? "bg-green-100 border-green-500 text-base font-medium text-green-900"
-									: "border-transparent text-base font-medium text-green-700 hover:bg-green-50 hover:border-green-300 hover:text-green-800"
+									? "bg-primary-light/20 border-primary text-base font-medium text-primary-dark dark:text-primary-light dark:bg-primary/20"
+									: "border-transparent text-base font-medium text-primary-dark dark:text-primary-light hover:bg-primary-light/10 dark:hover:bg-primary/10 hover:border-primary-light hover:text-primary-dark"
 							}`}
 						>
-							Phân Hạng
+							Grades
 						</Link>
 						<Link
 							href="/products"
 							className={`block pl-3 pr-4 py-2 border-l-4 ${
 								isActive("/products")
-									? "bg-green-100 border-green-500 text-base font-medium text-green-900"
-									: "border-transparent text-base font-medium text-green-700 hover:bg-green-50 hover:border-green-300 hover:text-green-800"
+									? "bg-primary-light/20 border-primary text-base font-medium text-primary-dark dark:text-primary-light dark:bg-primary/20"
+									: "border-transparent text-base font-medium text-primary-dark dark:text-primary-light hover:bg-primary-light/10 dark:hover:bg-primary/10 hover:border-primary-light hover:text-primary-dark"
 							}`}
 						>
-							Công Thức
+							Recipes
 						</Link>
 						<Link
 							href="/cultivars"
 							className={`block pl-3 pr-4 py-2 border-l-4 ${
 								isActive("/cultivars")
-									? "bg-green-100 border-green-500 text-base font-medium text-green-900"
-									: "border-transparent text-base font-medium text-green-700 hover:bg-green-50 hover:border-green-300 hover:text-green-800"
+									? "bg-primary-light/20 border-primary text-base font-medium text-primary-dark dark:text-primary-light dark:bg-primary/20"
+									: "border-transparent text-base font-medium text-primary-dark dark:text-primary-light hover:bg-primary-light/10 dark:hover:bg-primary/10 hover:border-primary-light hover:text-primary-dark"
 							}`}
 						>
-							Giống Trà
+							Cultivars
 						</Link>
 						<Link
 							href="/effects"
 							className={`block pl-3 pr-4 py-2 border-l-4 ${
 								isActive("/effects")
-									? "bg-green-100 border-green-500 text-base font-medium text-green-900"
-									: "border-transparent text-base font-medium text-green-700 hover:bg-green-50 hover:border-green-300 hover:text-green-800"
+									? "bg-primary-light/20 border-primary text-base font-medium text-primary-dark dark:text-primary-light dark:bg-primary/20"
+									: "border-transparent text-base font-medium text-primary-dark dark:text-primary-light hover:bg-primary-light/10 dark:hover:bg-primary/10 hover:border-primary-light hover:text-primary-dark"
 							}`}
 						>
-							Tác Dụng
+							Benefits
 						</Link>
+						<div className="pl-3 pr-4 py-4 flex items-center">
+							<span className="text-base font-medium text-primary-dark dark:text-primary-light mr-3">Theme:</span>
+							<ThemeToggle />
+						</div>
 					</div>
 				</div>
 			)}

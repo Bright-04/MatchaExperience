@@ -2,11 +2,7 @@
 
 import { useState } from "react";
 
-interface NewsletterSignupProps {
-	dark?: boolean;
-}
-
-export default function NewsletterSignup({ dark = false }: NewsletterSignupProps) {
+export default function NewsletterSignup() {
 	const [email, setEmail] = useState("");
 	const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 	const [message, setMessage] = useState("");
@@ -29,35 +25,50 @@ export default function NewsletterSignup({ dark = false }: NewsletterSignupProps
 			setEmail("");
 		}, 1000);
 	};
-
 	return (
-		<div className={`w-full py-16 px-4 sm:px-6 lg:px-8 ${dark ? "bg-green-800 text-white" : "bg-green-50 text-green-900"}`}>
-			<div className="max-w-4xl mx-auto text-center">
-				<h2 className={`text-3xl font-bold mb-4 ${dark ? "text-white" : "text-green-900"}`}>Subscribe to Our Newsletter</h2>
-				<p className={`text-xl mb-8 ${dark ? "text-green-100" : "text-green-800"}`}>Stay updated with the latest matcha tips, recipes, and exclusive content</p>
+		<div className="w-full py-16 px-4 sm:px-6 lg:px-8 bg-neutral-50 dark:bg-[#0d2321] text-foreground">
+			<div className="max-w-4xl mx-auto">
+				<div className="glass-card rounded-xl p-10 relative overflow-hidden bg-white/70 dark:bg-primary-dark/20 shadow-soft dark:shadow-lg">
+					{/* Decorative elements */}
+					<div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-primary-light/20 dark:bg-primary-light/10 blur-3xl"></div>
+					<div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-accent/10 dark:bg-accent/5 blur-2xl"></div>
 
-				{status === "success" && <div className="bg-green-600 text-white px-4 py-3 rounded mb-8 max-w-md mx-auto">{message}</div>}
+					<div className="relative z-10 text-center">
+						<h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-primary-dark dark:text-primary-light">Join Our Matcha Community</h2>
+						<p className="text-xl mb-8 max-w-2xl mx-auto text-primary-dark/80 dark:text-primary-light/80">
+							Subscribe to receive exclusive recipes, brewing tips, and special offers direct to your inbox
+						</p>
 
-				{status === "error" && <div className={`${dark ? "bg-red-700" : "bg-red-100 text-red-700"} px-4 py-3 rounded mb-8 max-w-md mx-auto`}>{message}</div>}
+						{status === "success" && (
+							<div className="bg-primary/90 text-white px-6 py-4 rounded-lg mb-8 max-w-md mx-auto shadow-md">
+								<p>{message}</p>
+							</div>
+						)}
 
-				<form onSubmit={handleSubmit} className="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
-					<input
-						type="email"
-						placeholder="Your email address"
-						className={`flex-grow px-4 py-3 rounded-lg focus:ring-green-500 focus:border-green-500 border ${
-							dark ? "border-green-600 bg-green-700 text-white placeholder-green-200" : "border-gray-300 bg-white text-green-900"
-						}`}
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-					<button
-						type="submit"
-						className={`font-medium px-6 py-3 rounded-lg transition duration-300 ${dark ? "bg-white text-green-800 hover:bg-green-100" : "bg-green-700 hover:bg-green-800 text-white"}`}
-					>
-						Subscribe
-					</button>
-				</form>
+						{status === "error" && (
+							<div className="bg-secondary/10 dark:bg-secondary/30 text-secondary dark:text-secondary-light px-6 py-4 rounded-lg mb-8 max-w-md mx-auto shadow-md">
+								<p>{message}</p>
+							</div>
+						)}
+
+						<form onSubmit={handleSubmit} className="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+							<input
+								type="email"
+								placeholder="Your email address"
+								className="flex-grow px-6 py-4 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary border border-primary/20 bg-white dark:bg-primary-dark/50 text-foreground dark:text-white placeholder-gray-400 dark:placeholder-white/70"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+								required
+							/>
+							<button
+								type="submit"
+								className="font-medium px-8 py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 bg-accent hover:bg-accent-dark text-white"
+							>
+								Subscribe
+							</button>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

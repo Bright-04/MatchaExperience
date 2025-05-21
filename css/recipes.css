@@ -23,9 +23,18 @@
     margin: 0 auto;
 }
 
+/* Effects section title image */
+.effects-title-img {
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 @media (max-width: 768px) {
     .recipe-title-img,
-    .tier-title-img {
+    .tier-title-img,
+    .effects-title-img {
         max-width: 220px;
     }
 }

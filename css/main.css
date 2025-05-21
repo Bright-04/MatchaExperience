@@ -1802,7 +1802,7 @@ main {
 .recipe-image {
 	position: relative;
 	width: 100%;
-	padding-bottom: 100%; /* Creates a 1:1 aspect ratio */
+	padding-bottom: 115%; /* Creates a 0.87:1 aspect ratio (vertical) */
 	overflow: hidden;
 }
 

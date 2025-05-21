@@ -3,6 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Button from "@/components/ui/Button";
+import Badge from "@/components/ui/Badge";
+import Card from "@/components/ui/Card";
 
 // This would typically come from a database or CMS
 const products = {
@@ -149,36 +152,36 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
 	return (
 		<div className="flex flex-col items-center">
 			{/* Breadcrumbs */}
-			<div className="w-full bg-green-50 py-4 px-4 sm:px-6 lg:px-8">
+			<div className="w-full bg-primary-light/5 dark:bg-primary-dark/10 py-4 px-4 sm:px-6 lg:px-8">
 				<div className="max-w-7xl mx-auto">
 					<nav className="flex" aria-label="Breadcrumb">
-						<ol className="flex items-center space-x-2 text-sm text-green-700">
+						<ol className="flex items-center space-x-2 text-sm text-primary-dark/80 dark:text-primary-light/80">
 							<li>
-								<Link href="/" className="hover:text-green-900">
+								<Link href="/" className="hover:text-primary transition-colors duration-300">
 									Home
 								</Link>
 							</li>
 							<li className="flex items-center">
-								<svg className="h-4 w-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+								<svg className="h-4 w-4 text-primary-light/60 dark:text-primary-light/40" fill="currentColor" viewBox="0 0 20 20">
 									<path
 										fillRule="evenodd"
 										d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
 										clipRule="evenodd"
 									/>
 								</svg>
-								<Link href="/products" className="ml-2 hover:text-green-900">
+								<Link href="/products" className="ml-2 hover:text-primary transition-colors duration-300">
 									Products
 								</Link>
 							</li>
 							<li className="flex items-center">
-								<svg className="h-4 w-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+								<svg className="h-4 w-4 text-primary-light/60 dark:text-primary-light/40" fill="currentColor" viewBox="0 0 20 20">
 									<path
 										fillRule="evenodd"
 										d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
 										clipRule="evenodd"
 									/>
 								</svg>
-								<span className="ml-2 text-green-900">{product.name}</span>
+								<span className="ml-2 text-primary font-medium">{product.name}</span>
 							</li>
 						</ol>
 					</nav>
@@ -186,134 +189,159 @@ export default function ProductDetail({ params }: { params: { slug: string } }) 
 			</div>
 
 			{/* Product Detail */}
-			<div className="w-full py-12 px-4 sm:px-6 lg:px-8 bg-white">
+			<div className="w-full py-12 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0d2321]">
 				<div className="max-w-7xl mx-auto">
 					<div className="lg:grid lg:grid-cols-2 lg:gap-16">
 						{/* Product Image */}
-						<div className="mb-10 lg:mb-0">
-							<div className="relative h-96 md:h-[500px] w-full rounded-lg overflow-hidden shadow-lg">
-								<Image src={product.image} alt={product.name} fill priority style={{ objectFit: "cover" }} />
+						<div className="mb-10 lg:mb-0 animate-fade-in">
+							<div className="relative h-96 md:h-[500px] w-full rounded-xl overflow-hidden shadow-lg">
+								<Image src={product.image} alt={product.name} fill priority style={{ objectFit: "cover" }} className="transition-transform duration-500 hover:scale-105" />
 							</div>
 						</div>
 
 						{/* Product Info */}
-						<div>
-							<h1 className="text-3xl font-bold text-green-900 mb-2">{product.name}</h1>
-							<p className="text-2xl font-bold text-green-700 mb-6">{product.price}</p>
+						<div className="animate-slide-in">
+							<h1 className="text-3xl font-bold text-primary-dark dark:text-primary-light mb-2 font-serif">{product.name}</h1>
+
+							<div className="flex items-center mb-4">
+								<Badge variant="primary" size="md">
+									{product.price}
+								</Badge>
+								<span className="ml-4 text-primary-dark/60 dark:text-primary-light/60">{product.origin}</span>
+							</div>
+
+							<p className="text-lg text-primary-dark/80 dark:text-primary-light/80 mb-6">{product.description}</p>
+
 							<div className="mb-6">
-								<p className="text-green-800 mb-4">{product.description}</p>
+								<h3 className="font-semibold text-primary-dark dark:text-primary-light mb-2">Features:</h3>
+								<div className="flex flex-wrap gap-2">
+									{product.features.map((feature, idx) => (
+										<Badge key={idx} variant={idx % 2 === 0 ? "outline" : "accent"} size="sm">
+											{feature}
+										</Badge>
+									))}
+								</div>
+							</div>
 
-								<div className="mb-6">
-									<h3 className="font-semibold text-green-800 mb-2">Features:</h3>
-									<div className="flex flex-wrap gap-2">
-										{product.features.map((feature, idx) => (
-											<span key={idx} className="bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm">
-												{feature}
-											</span>
-										))}
-									</div>
-								</div>
-
-								<div className="flex items-start gap-6 text-sm text-green-800 mb-6">
-									<div>
-										<span className="font-semibold block">Origin:</span>
-										{product.origin}
-									</div>
-									<div>
-										<span className="font-semibold block">Size:</span>
-										{product.servingSize}
-									</div>
-								</div>
-							</div>{" "}
-							<div className="mb-8">
-								<div className="flex flex-col sm:flex-row gap-4">
-									<button className="w-full bg-green-700 hover:bg-green-800 text-white font-medium py-2 px-4 rounded transition duration-300">See Brewing Instructions</button>
-								</div>
-							</div>{" "}
-							<div className="border-t border-gray-200 pt-6">
-								<div className="flex items-center mb-4">
-									<svg className="h-5 w-5 text-green-700 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path
-											fillRule="evenodd"
-											d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-											clipRule="evenodd"
-										/>
-									</svg>
-									<span className="text-green-800">Premium quality matcha</span>
-								</div>
-								<div className="flex items-center">
-									<svg className="h-5 w-5 text-green-700 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path
-											fillRule="evenodd"
-											d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-											clipRule="evenodd"
-										/>
-									</svg>
-									<span className="text-green-800">Authentically sourced from Japan</span>
-								</div>
+							<div className="flex items-center space-x-4 mt-8">
+								<Button variant="primary" size="lg" fullWidth>
+									Add to Cart
+								</Button>
 							</div>
 						</div>
 					</div>
 
 					{/* Product Details Tabs */}
-					<div className="mt-16">
-						<div className="border-b border-gray-200">
-							<nav className="-mb-px flex space-x-8">
-								<button className="border-green-500 text-green-700 py-4 px-1 border-b-2 font-medium text-sm">Description</button>
-								<button className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-4 px-1 border-b-2 font-medium text-sm">Preparation</button>
-								<button className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-4 px-1 border-b-2 font-medium text-sm">Nutrition Facts</button>
-								<button className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-4 px-1 border-b-2 font-medium text-sm">Reviews</button>
-							</nav>
+					<div className="mt-16 border-t border-primary-light/20 dark:border-primary-dark/20 pt-12">
+						<div className="grid md:grid-cols-2 gap-12">
+							{/* Description */}
+							<Card variant="simple" title="About this Matcha" className="mb-8 animate-fade-in">
+								<div className="prose prose-green dark:prose-invert" dangerouslySetInnerHTML={{ __html: product.longDescription }} />
+							</Card>
+
+							{/* How to Prepare */}
+							<Card variant="simple" title="How to Prepare" className="mb-8 animate-fade-in animate-stagger-delay-1">
+								<div className="prose prose-green dark:prose-invert" dangerouslySetInnerHTML={{ __html: product.instructions }} />
+							</Card>
 						</div>
 
-						<div className="mt-8 prose prose-green max-w-none">
-							<div dangerouslySetInnerHTML={{ __html: product.longDescription }} />
+						{/* Nutrition Facts */}
+						<Card variant="featured" title="Nutrition Facts" className="mt-12 animate-fade-in animate-stagger-delay-2">
+							<div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+								<div>
+									<h4 className="text-sm font-semibold text-primary-dark/70 dark:text-primary-light/70 uppercase mb-1">Serving Size</h4>
+									<p className="text-lg text-primary-dark dark:text-primary-light">{product.nutritionFacts.servingSize}</p>
+								</div>
+								<div>
+									<h4 className="text-sm font-semibold text-primary-dark/70 dark:text-primary-light/70 uppercase mb-1">Calories</h4>
+									<p className="text-lg text-primary-dark dark:text-primary-light">{product.nutritionFacts.calories}</p>
+								</div>
+								<div>
+									<h4 className="text-sm font-semibold text-primary-dark/70 dark:text-primary-light/70 uppercase mb-1">Protein</h4>
+									<p className="text-lg text-primary-dark dark:text-primary-light">{product.nutritionFacts.protein}</p>
+								</div>
+								<div>
+									<h4 className="text-sm font-semibold text-primary-dark/70 dark:text-primary-light/70 uppercase mb-1">Caffeine</h4>
+									<p className="text-lg text-primary-dark dark:text-primary-light">{product.nutritionFacts.caffeine}</p>
+								</div>
+								<div>
+									<h4 className="text-sm font-semibold text-primary-dark/70 dark:text-primary-light/70 uppercase mb-1">Total Fat</h4>
+									<p className="text-lg text-primary-dark dark:text-primary-light">{product.nutritionFacts.totalFat}</p>
+								</div>
+								<div>
+									<h4 className="text-sm font-semibold text-primary-dark/70 dark:text-primary-light/70 uppercase mb-1">Total Carbohydrates</h4>
+									<p className="text-lg text-primary-dark dark:text-primary-light">{product.nutritionFacts.totalCarbohydrates}</p>
+								</div>
+								<div>
+									<h4 className="text-sm font-semibold text-primary-dark/70 dark:text-primary-light/70 uppercase mb-1">Antioxidants</h4>
+									<p className="text-lg text-primary-dark dark:text-primary-light">{product.nutritionFacts.antioxidants}</p>
+								</div>
+								<div>
+									<h4 className="text-sm font-semibold text-primary-dark/70 dark:text-primary-light/70 uppercase mb-1">L-Theanine</h4>
+									<p className="text-lg text-primary-dark dark:text-primary-light">{product.nutritionFacts.lTheanine}</p>
+								</div>
+							</div>
+						</Card>
+					</div>
+
+					{/* Customer Reviews */}
+					<div className="mt-16 border-t border-primary-light/20 dark:border-primary-dark/20 pt-12 animate-fade-in">
+						<h2 className="text-2xl font-bold text-primary-dark dark:text-primary-light mb-8 font-serif">Customer Reviews</h2>
+
+						<div className="space-y-6">
+							{product.reviews.map((review, index) => (
+								<Card key={index} variant="simple" className={`animate-fade-in animate-stagger-delay-${(index % 3) + 1}`}>
+									<div className="flex items-center mb-2">
+										<span className="font-semibold text-primary-dark dark:text-primary-light">{review.author}</span>
+										<span className="ml-4 text-sm text-primary-dark/60 dark:text-primary-light/60">{review.date}</span>
+									</div>
+
+									<div className="flex mb-2">
+										{[...Array(5)].map((_, i) => (
+											<svg
+												key={i}
+												className={`h-5 w-5 ${i < review.rating ? "text-accent" : "text-primary-light/30 dark:text-primary-dark/30"}`}
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+											</svg>
+										))}
+									</div>
+
+									<p className="text-primary-dark/80 dark:text-primary-light/80">{review.comment}</p>
+								</Card>
+							))}
 						</div>
 					</div>
 
 					{/* Related Products */}
-					{product.relatedProducts && product.relatedProducts.length > 0 && (
-						<div className="mt-16">
-							<h2 className="text-2xl font-bold text-green-900 mb-8">You Might Also Like</h2>
-							<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-								{product.relatedProducts.map((relatedSlug) => {
-									const relatedProduct = products[relatedSlug as keyof typeof products];
-									if (!relatedProduct) return null;
+					<div className="mt-16 border-t border-primary-light/20 dark:border-primary-dark/20 pt-12">
+						<h2 className="text-2xl font-bold text-primary-dark dark:text-primary-light mb-8 font-serif">You May Also Like</h2>
 
-									return (
-										<div key={relatedSlug} className="bg-green-50 rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
-											<Link href={`/products/${relatedSlug}`}>
-												<div className="relative h-64 w-full">
-													<Image src={relatedProduct.image} alt={relatedProduct.name} fill style={{ objectFit: "cover" }} />
-												</div>
-											</Link>
-											<div className="p-6">
-												<div className="flex justify-between items-start mb-4">
-													<h3 className="text-xl font-bold text-green-800">
-														<Link href={`/products/${relatedSlug}`} className="hover:text-green-700">
-															{relatedProduct.name}
-														</Link>
-													</h3>
-													<span className="text-lg font-bold text-green-700">{relatedProduct.price}</span>
-												</div>
-												<p className="text-green-700 mb-4 line-clamp-2">{relatedProduct.description}</p>
-												<Link href={`/products/${relatedSlug}`} className="text-green-600 hover:text-green-800 font-medium inline-flex items-center">
-													View product
-													<svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-														<path
-															fillRule="evenodd"
-															d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-															clipRule="evenodd"
-														/>
-													</svg>
-												</Link>
-											</div>
-										</div>
-									);
-								})}
-							</div>
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+							{product.relatedProducts.map((relatedProductId, index) => {
+								const relatedProduct = products[relatedProductId as keyof typeof products];
+								if (!relatedProduct) return null;
+
+								return (
+									<Card
+										key={index}
+										variant={index % 2 === 0 ? "default" : "featured"}
+										title={relatedProduct.name}
+										image={{ src: relatedProduct.image, alt: relatedProduct.name }}
+										badge={{ text: relatedProduct.price, variant: "primary" }}
+										className="animate-fade-in"
+									>
+										<p className="text-primary-dark/80 dark:text-primary-light/80 mb-4">{relatedProduct.description}</p>
+										<Button href={`/products/${relatedProductId}`} variant="primary" fullWidth>
+											View Details
+										</Button>
+									</Card>
+								);
+							})}
 						</div>
-					)}
+					</div>
 				</div>
 			</div>
 		</div>

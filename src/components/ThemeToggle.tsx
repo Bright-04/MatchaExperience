@@ -15,17 +15,16 @@ export default function ThemeToggle() {
 		// Avoid hydration mismatch
 		return null;
 	}
-
 	return (
 		<div className="flex items-center">
 			<button
 				onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-				className="p-2 rounded-full bg-primary-light/10 dark:bg-primary-dark/30 text-primary-dark dark:text-primary-light transition-colors duration-200"
+				className="p-2 rounded-full bg-primary-light/10 dark:bg-primary-dark/30 text-primary-dark dark:text-primary-light hover:bg-primary-light/20 dark:hover:bg-primary-dark/50 transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
 				aria-label="Toggle theme"
 			>
 				{theme === "dark" ? (
-					// Sun icon
-					<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					// Sun icon (light mode)
+					<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 animate-fade-in" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path
 							strokeLinecap="round"
 							strokeLinejoin="round"
@@ -34,8 +33,8 @@ export default function ThemeToggle() {
 						/>
 					</svg>
 				) : (
-					// Moon icon
-					<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					// Moon icon (dark mode)
+					<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 animate-fade-in" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
 					</svg>
 				)}

@@ -1,26 +1,28 @@
-// filepath: d:\IT Study (2024 - 2025)\MatchaExperience\src\components\Footer.tsx
 import Link from "next/link";
+import Button from "./ui/Button";
+import { ANIMATIONS } from "@/utils/animations";
 
 export default function Footer() {
 	return (
-		<footer className="bg-gradient-to-br from-green-600 to-green-700 dark:from-green-900 dark:to-green-800 text-white">
+		<footer className="bg-gradient-to-br from-primary to-primary-dark dark:from-primary-darkest dark:to-primary-dark text-white">
 			<div className="max-w-7xl mx-auto pt-16 pb-8 px-4 sm:px-6 lg:px-8">
 				<div className="grid grid-cols-1 md:grid-cols-4 gap-10">
 					{/* Brand Column */}
-					<div className="space-y-4">
+					<div className="space-y-4 animate-slide-in">
 						<div className="flex items-center">
-							<div className="h-10 w-10 rounded-full bg-green-400 dark:bg-green-500 flex items-center justify-center text-white font-bold mr-3 shadow-md">M</div>
+							<div className="h-10 w-10 rounded-full bg-primary-light dark:bg-primary flex items-center justify-center text-white font-bold mr-3 shadow-md">M</div>
 							<span className="text-xl font-serif font-semibold text-white">Matcha Experience</span>
 						</div>
-						<p className="text-green-100 dark:text-green-200/90 text-sm mt-4">Discover the authentic world of Japanese matcha, from its rich history to its exceptional health benefits.</p>
+						<p className="text-primary-lightest/90 dark:text-primary-lightest/80 text-sm mt-4">
+							Discover the authentic world of Japanese matcha, from its rich history to its exceptional health benefits.
+						</p>
 					</div>
-
 					{/* Quick Links */}
-					<div>
+					<div className="animate-slide-in animate-stagger-delay-1">
 						<h3 className="text-lg font-serif font-semibold text-white mb-4">Quick Links</h3>
 						<ul className="space-y-2 text-sm">
 							<li>
-								<Link href="/" className="text-green-100 hover:text-white transition-colors duration-300 flex items-center">
+								<Link href="/" className="text-primary-lightest/90 hover:text-white transition-all duration-300 flex items-center transform hover:translate-x-1">
 									<svg className="w-3 h-3 mr-2" viewBox="0 0 20 20" fill="currentColor">
 										<path
 											fillRule="evenodd"
@@ -30,9 +32,9 @@ export default function Footer() {
 									</svg>
 									Home
 								</Link>
-							</li>
+							</li>{" "}
 							<li>
-								<Link href="/history" className="text-green-100 hover:text-white transition-colors duration-300 flex items-center">
+								<Link href="/history" className="text-primary-lightest/90 hover:text-white transition-all duration-300 flex items-center transform hover:translate-x-1">
 									<svg className="w-3 h-3 mr-2" viewBox="0 0 20 20" fill="currentColor">
 										<path
 											fillRule="evenodd"
@@ -44,7 +46,7 @@ export default function Footer() {
 								</Link>
 							</li>
 							<li>
-								<Link href="/tiers" className="text-green-100 hover:text-white transition-colors duration-300 flex items-center">
+								<Link href="/tiers" className="text-primary-lightest/90 hover:text-white transition-all duration-300 flex items-center transform hover:translate-x-1">
 									<svg className="w-3 h-3 mr-2" viewBox="0 0 20 20" fill="currentColor">
 										<path
 											fillRule="evenodd"
@@ -56,7 +58,7 @@ export default function Footer() {
 								</Link>
 							</li>
 							<li>
-								<Link href="/products" className="text-green-100 hover:text-white transition-colors duration-300 flex items-center">
+								<Link href="/products" className="text-primary-lightest/90 hover:text-white transition-all duration-300 flex items-center transform hover:translate-x-1">
 									<svg className="w-3 h-3 mr-2" viewBox="0 0 20 20" fill="currentColor">
 										<path
 											fillRule="evenodd"
@@ -68,7 +70,7 @@ export default function Footer() {
 								</Link>
 							</li>
 							<li>
-								<Link href="/cultivars" className="text-green-100 hover:text-white transition-colors duration-300 flex items-center">
+								<Link href="/cultivars" className="text-primary-lightest/90 hover:text-white transition-all duration-300 flex items-center transform hover:translate-x-1">
 									<svg className="w-3 h-3 mr-2" viewBox="0 0 20 20" fill="currentColor">
 										<path
 											fillRule="evenodd"
@@ -80,14 +82,13 @@ export default function Footer() {
 								</Link>
 							</li>
 						</ul>
-					</div>
-
+					</div>{" "}
 					{/* Resources */}
-					<div>
+					<div className="animate-slide-in animate-stagger-delay-2">
 						<h3 className="text-lg font-serif font-semibold text-white mb-4">Resources</h3>
 						<ul className="space-y-2 text-sm">
 							<li>
-								<Link href="/blog" className="text-green-100 hover:text-white transition-colors duration-300 flex items-center">
+								<Link href="/blog" className="text-primary-lightest/90 hover:text-white transition-all duration-300 flex items-center transform hover:translate-x-1">
 									<svg className="w-3 h-3 mr-2" viewBox="0 0 20 20" fill="currentColor">
 										<path
 											fillRule="evenodd"
@@ -99,7 +100,7 @@ export default function Footer() {
 								</Link>
 							</li>
 							<li>
-								<Link href="/effects" className="text-green-100 hover:text-white transition-colors duration-300 flex items-center">
+								<Link href="/effects" className="text-primary-lightest/90 hover:text-white transition-all duration-300 flex items-center transform hover:translate-x-1">
 									<svg className="w-3 h-3 mr-2" viewBox="0 0 20 20" fill="currentColor">
 										<path
 											fillRule="evenodd"
@@ -111,7 +112,7 @@ export default function Footer() {
 								</Link>
 							</li>
 							<li>
-								<Link href="/contact" className="text-green-100 hover:text-white transition-colors duration-300 flex items-center">
+								<Link href="/contact" className="text-primary-lightest/90 hover:text-white transition-all duration-300 flex items-center transform hover:translate-x-1">
 									<svg className="w-3 h-3 mr-2" viewBox="0 0 20 20" fill="currentColor">
 										<path
 											fillRule="evenodd"
@@ -123,27 +124,27 @@ export default function Footer() {
 								</Link>
 							</li>
 						</ul>
-					</div>
-
+					</div>{" "}
 					{/* Newsletter */}
-					<div>
+					<div className="animate-slide-in animate-stagger-delay-3">
 						<h3 className="text-lg font-serif font-semibold text-white mb-4">Stay Updated</h3>
-						<p className="text-green-100 text-sm mb-4">Subscribe to receive updates on new products and matcha knowledge.</p>
+						<p className="text-primary-lightest/90 text-sm mb-4">Subscribe to receive updates on new products and matcha knowledge.</p>
 						<div className="flex">
 							<input
 								type="email"
 								placeholder="Your email"
-								className="px-4 py-2 bg-green-700/50 dark:bg-green-800/60 text-white placeholder-green-100/80 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-green-300 dark:focus:ring-green-200 w-full text-sm transition-all duration-300"
+								className="px-4 py-2 bg-primary-dark/60 dark:bg-primary-darkest/80 text-white placeholder-primary-lightest/70 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-accent-light transition-all duration-300 w-full text-sm shadow-inner"
 							/>
-							<button className="bg-accent hover:bg-accent-dark text-white px-4 py-2 rounded-r-lg transition-colors duration-300 text-sm shadow-sm hover:shadow-md">Subscribe</button>
+							<Button variant="accent" size="sm" className="rounded-l-none">
+								Subscribe
+							</Button>
 						</div>
 					</div>
-				</div>
-
+				</div>{" "}
 				{/* Social Media Links */}
-				<div className="mt-12 flex flex-wrap items-center justify-between border-t border-green-500/30 dark:border-green-700/50 pt-8">
-					<div className="flex space-x-6">
-						<a href="#" className="text-green-100 hover:text-white transition-colors duration-300">
+				<div className="mt-12 flex flex-wrap items-center justify-between border-t border-primary-light/30 dark:border-primary/30 pt-8">
+					<div className="flex space-x-6 animate-fade-in">
+						<a href="#" className="text-primary-lightest/80 hover:text-white transition-all duration-300 transform hover:scale-110">
 							<span className="sr-only">Facebook</span>
 							<svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 								<path
@@ -153,7 +154,7 @@ export default function Footer() {
 								/>
 							</svg>
 						</a>
-						<a href="#" className="text-green-100 hover:text-white transition-colors duration-300">
+						<a href="#" className="text-primary-lightest/80 hover:text-white transition-all duration-300 transform hover:scale-110">
 							<span className="sr-only">Instagram</span>
 							<svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 								<path
@@ -163,14 +164,14 @@ export default function Footer() {
 								/>
 							</svg>
 						</a>
-						<a href="#" className="text-green-100 hover:text-white transition-colors duration-300">
+						<a href="#" className="text-primary-lightest/80 hover:text-white transition-all duration-300 transform hover:scale-110">
 							<span className="sr-only">Twitter</span>
 							<svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 								<path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
 							</svg>
 						</a>
 					</div>
-					<p className="text-green-100 text-sm mt-4 md:mt-0">&copy; {new Date().getFullYear()} Matcha Experience. All rights reserved.</p>
+					<p className="text-primary-lightest/80 text-sm mt-4 md:mt-0 animate-fade-in animate-stagger-delay-2">&copy; {new Date().getFullYear()} Matcha Experience. All rights reserved.</p>
 				</div>
 			</div>
 		</footer>

@@ -43,18 +43,21 @@ export default function Navbar() {
 				: "text-primary-dark dark:text-primary-light hover:bg-primary-light/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-white"
 		}`;
 	};
-
 	return (
 		<nav className={`${isScrolled ? "py-2 bg-white/90 dark:bg-[#0d2321]/90 shadow-md backdrop-blur-sm" : "py-4 bg-white dark:bg-[#0d2321]"} sticky top-0 z-50 transition-all duration-300`}>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex justify-between items-center">
 					<div className="flex items-center">
-						<Link href="/" className="flex items-center">
-							<div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-3">M</div>
-							<span className="text-xl font-serif font-semibold text-primary-dark dark:text-primary-light">Matcha Experience</span>
+						<Link href="/" className="flex items-center group">
+							<div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-3 transition-transform duration-300 group-hover:scale-110 shadow-md">
+								M
+							</div>
+							<span className="text-xl font-serif font-semibold text-primary-dark dark:text-primary-light transition-colors duration-300 group-hover:text-primary group-hover:dark:text-primary-light/80">
+								Matcha Experience
+							</span>
 						</Link>
 					</div>{" "}
-					<div className="hidden md:flex md:items-center md:space-x-2">
+					<div className="hidden md:flex md:items-center md:space-x-2 animate-fade-in">
 						<Link href="/" className={getLinkClassName("/")}>
 							Home
 						</Link>
@@ -73,6 +76,9 @@ export default function Navbar() {
 						<Link href="/effects" className={getLinkClassName("/effects")}>
 							Benefits
 						</Link>
+						<Link href="/design-system" className={getLinkClassName("/design-system")}>
+							Design System
+						</Link>
 						<div className="ml-2">
 							<ThemeToggle />
 						</div>
@@ -80,7 +86,8 @@ export default function Navbar() {
 					<div className="-mr-2 flex items-center sm:hidden">
 						<button
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
-							className="inline-flex items-center justify-center p-2 rounded-md text-primary-dark dark:text-primary-light hover:text-primary-dark hover:bg-primary-light/20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+							className="inline-flex items-center justify-center p-2 rounded-md text-primary-dark dark:text-primary-light hover:text-primary-dark hover:bg-primary-light/20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary focus:shadow-focus transition-all duration-300"
+							aria-expanded={isMenuOpen}
 						>
 							<span className="sr-only">Open main menu</span>
 							{isMenuOpen ? (

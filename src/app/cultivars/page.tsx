@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Card from "@/components/ui/Card";
+import Badge from "@/components/ui/Badge";
 
 const cultivars = [
 	{
@@ -57,16 +59,17 @@ export default function Cultivars() {
 			{/* Hero Section */}
 			<div className="hero w-full py-16 px-4 sm:px-6 lg:px-8 text-center">
 				<div className="max-w-7xl mx-auto">
-					<h1 className="text-4xl md:text-5xl font-bold text-primary-dark dark:text-primary-light mb-4 font-serif">Matcha Cultivars</h1>
-					<p className="text-xl text-primary-dark/80 dark:text-primary-light/80 mb-8 max-w-3xl mx-auto">
+					<h1 className="text-4xl md:text-5xl font-bold text-primary-dark dark:text-primary-light mb-4 font-serif animate-slide-up">Matcha Cultivars</h1>
+					<p className="text-xl text-primary-dark/80 dark:text-primary-light/80 mb-8 max-w-3xl mx-auto animate-fade-in animate-stagger-delay-1">
 						Explore the diverse varieties of tea plants specifically grown for producing premium matcha
 					</p>
 				</div>
-			</div>{" "}
+			</div>
+
 			{/* Introduction Section */}
 			<div className="w-full py-12 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0d2321]">
 				<div className="max-w-7xl mx-auto">
-					<div className="bg-primary-light/10 dark:bg-primary-dark/30 p-8 rounded-lg shadow-md">
+					<Card variant="simple" className="animate-fade-in animate-stagger-delay-2">
 						<h2 className="text-2xl font-bold text-primary-dark dark:text-primary-light mb-4 font-serif">What are Cultivars?</h2>
 						<p className="text-primary-dark/80 dark:text-primary-light/80 mb-4">
 							Tea cultivars are varieties of the Camellia sinensis plant that have been selectively bred for specific characteristics. For matcha production, cultivars are chosen based
@@ -76,49 +79,59 @@ export default function Cultivars() {
 							While all matcha comes from the same plant species, different cultivars produce distinct flavors, aromas, and characteristics in the final product. The most prized matcha
 							typically comes from specific cultivars grown in optimal conditions and processed with meticulous care.
 						</p>
-					</div>
+					</Card>
 				</div>
-			</div>{" "}
+			</div>
+
 			{/* Cultivars Grid */}
 			<div className="w-full py-16 px-4 sm:px-6 lg:px-8 bg-primary-light/10 dark:bg-primary-dark/20">
 				<div className="max-w-7xl mx-auto">
-					<h2 className="text-3xl font-bold text-center text-primary-dark dark:text-primary-light mb-12 font-serif">Premium Matcha Cultivars</h2>
+					<h2 className="text-3xl font-bold text-center text-primary-dark dark:text-primary-light mb-12 font-serif animate-slide-up">Premium Matcha Cultivars</h2>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{cultivars.map((cultivar, index) => (
-							<div key={index} className="bg-white dark:bg-primary-dark/30 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-								<div className="relative h-64 w-full">
-									<Image src={cultivar.image} alt={`${cultivar.name} matcha cultivar`} fill style={{ objectFit: "cover" }} />
+							<Card
+								key={index}
+								variant={index % 3 === 0 ? "default" : index % 3 === 1 ? "featured" : "simple"}
+								title={cultivar.name}
+								image={{ src: cultivar.image, alt: `${cultivar.name} matcha cultivar` }}
+								badge={{ text: cultivar.characteristics[0], variant: "primary" }}
+								className={`animate-fade-in animate-stagger-delay-${(index % 3) + 1}`}
+							>
+								<p className="text-primary-dark/80 dark:text-primary-light/80 mb-4">{cultivar.description}</p>
+								<h4 className="font-semibold text-primary-dark dark:text-primary-light mb-2">Key Characteristics:</h4>
+								<div className="flex flex-wrap gap-2 mb-2">
+									{cultivar.characteristics.map((characteristic, idx) => (
+										<Badge key={idx} variant={idx % 2 === 0 ? "outline" : "accent"} size="sm">
+											{characteristic}
+										</Badge>
+									))}
 								</div>
-								<div className="p-6">
-									<h3 className="text-xl font-bold text-primary-dark dark:text-primary-light mb-2 font-serif">{cultivar.name}</h3>
-									<p className="text-primary-dark/80 dark:text-primary-light/80 mb-4">{cultivar.description}</p>
-									<h4 className="font-semibold text-primary-dark dark:text-primary-light mb-2">Key Characteristics:</h4>
-									<ul className="list-disc pl-5 text-primary-dark/80 dark:text-primary-light/80 space-y-1">
-										{cultivar.characteristics.map((characteristic, idx) => (
-											<li key={idx}>{characteristic}</li>
-										))}
-									</ul>
-								</div>
-							</div>
+							</Card>
 						))}
 					</div>
 				</div>
-			</div>{" "}
+			</div>
+
 			{/* Growing Conditions */}
 			<div className="w-full py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0d2321]">
 				<div className="max-w-7xl mx-auto">
 					<div className="flex flex-col md:flex-row items-center gap-12">
-						<div className="md:w-1/2 relative h-96 w-full rounded-lg overflow-hidden shadow-xl">
-							<Image src="/images/bowl-of-matcha-vertical.jpg" alt="Matcha growing conditions" fill style={{ objectFit: "cover" }} className="rounded-lg" />
+						<div className="md:w-1/2 relative h-96 w-full rounded-lg overflow-hidden shadow-xl animate-fade-in">
+							<Image
+								src="/images/bowl-of-matcha-vertical.jpg"
+								alt="Matcha growing conditions"
+								fill
+								style={{ objectFit: "cover" }}
+								className="rounded-lg transition-transform duration-500 hover:scale-105"
+							/>
 							<div className="absolute inset-0 bg-gradient-to-t from-primary-dark/40 to-transparent"></div>
 						</div>
-						<div className="md:w-1/2">
+						<div className="md:w-1/2 animate-slide-in">
 							<h2 className="text-3xl font-bold text-primary-dark dark:text-primary-light mb-6 font-serif">Ideal Growing Conditions</h2>
 							<div className="space-y-4 text-lg text-primary-dark/90 dark:text-primary-light/90">
-								{" "}
 								<p className="flex items-start">
-									<span className="flex-shrink-0 bg-primary p-1.5 rounded-full mr-3 mt-1">
+									<span className="flex-shrink-0 bg-primary p-1.5 rounded-full mr-3 mt-1 transition-all duration-300 hover:scale-110">
 										<svg className="h-3 w-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
 										</svg>
@@ -129,7 +142,7 @@ export default function Cultivars() {
 									</span>
 								</p>
 								<p className="flex items-start">
-									<span className="flex-shrink-0 bg-primary p-1.5 rounded-full mr-3 mt-1">
+									<span className="flex-shrink-0 bg-primary p-1.5 rounded-full mr-3 mt-1 transition-all duration-300 hover:scale-110">
 										<svg className="h-3 w-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
 										</svg>
@@ -140,7 +153,7 @@ export default function Cultivars() {
 									</span>
 								</p>
 								<p className="flex items-start">
-									<span className="flex-shrink-0 bg-primary p-1.5 rounded-full mr-3 mt-1">
+									<span className="flex-shrink-0 bg-primary p-1.5 rounded-full mr-3 mt-1 transition-all duration-300 hover:scale-110">
 										<svg className="h-3 w-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
 										</svg>
@@ -151,7 +164,7 @@ export default function Cultivars() {
 									</span>
 								</p>{" "}
 								<p className="flex items-start">
-									<span className="flex-shrink-0 bg-primary p-1.5 rounded-full mr-3 mt-1">
+									<span className="flex-shrink-0 bg-primary p-1.5 rounded-full mr-3 mt-1 transition-all duration-300 hover:scale-110">
 										<svg className="h-3 w-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
 										</svg>
@@ -162,7 +175,7 @@ export default function Cultivars() {
 									</span>
 								</p>
 								<p className="flex items-start">
-									<span className="flex-shrink-0 bg-primary p-1.5 rounded-full mr-3 mt-1">
+									<span className="flex-shrink-0 bg-primary p-1.5 rounded-full mr-3 mt-1 transition-all duration-300 hover:scale-110">
 										<svg className="h-3 w-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
 										</svg>

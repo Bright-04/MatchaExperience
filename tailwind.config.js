@@ -5,6 +5,13 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
+				primary: {
+					lightest: "#c8e6c9",
+					light: "#8fe0d6",
+					DEFAULT: "#2a9d8f",
+					dark: "#207b71",
+					darkest: "#0d3b11",
+				},
 				green: {
 					50: "#e6f5f3",
 					100: "#c2e8e4",
@@ -26,6 +33,12 @@ module.exports = {
 					light: "#eb8a72",
 					DEFAULT: "#e76f51",
 					dark: "#d85638",
+				},
+				text: {
+					darkest: "#1a1a1a",
+					dark: "#333333",
+					medium: "#555555",
+					light: "#f5f5f5",
 				},
 			},
 			fontFamily: {

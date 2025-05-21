@@ -1,10 +1,10 @@
 /* History section specific styles */
 .split-timeline {
     display: flex;
-    max-width: 1200px;
-    margin: 3rem auto;
+    max-width: 1400px; /* Tăng độ rộng tối đa thêm nữa */
+    margin: 4rem auto;
     position: relative;
-    gap: 50px;
+    gap: 70px; /* Tăng khoảng cách giữa các cột */
     align-items: stretch;
 }
 
@@ -34,9 +34,9 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4.5rem;
+    gap: 8rem; /* Tăng khoảng cách giữa các mục timeline nhiều hơn */
     position: relative;
-    padding: 40px 0;
+    padding: 60px 0; /* Tăng padding để tạo không gian */
 }
 
 .timeline-center {
@@ -98,20 +98,41 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Styling for timeline date images */
+img.timeline-date {
+    background: transparent;
+    padding: 0;
+    max-width: 600px; /* Tăng kích thước lớn hơn nữa */
+    width: 100%; /* Đảm bảo chiếm đủ độ rộng có thể */
+    height: auto;
+    border-radius: 0; /* Bỏ border-radius */
+    object-fit: cover;
+    box-shadow: none; /* Bỏ box-shadow để không còn hiệu ứng box hiện đằng sau */
+    margin-bottom: 2rem; /* Tăng khoảng cách với content box */
+}
+
 .timeline-date:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+img.timeline-date:hover {
+    transform: translateY(-5px) scale(1.05);
+    z-index: 10; /* Đảm bảo hiển thị phía trên khi hover */
 }
 
 .timeline-content {
     background: var(--white);
     border-radius: 12px;
     box-shadow: var(--shadow);
-    padding: 2rem;
+    padding: 1.8rem;
     position: relative;
-    width: 100%;
+    width: 85%; /* Giảm độ rộng để nhỏ hơn box hình ảnh */
+    max-width: 360px; /* Đặt kích thước tối đa để đảm bảo nhỏ hơn box hình ảnh */
     z-index: 2;
     margin-bottom: 0.8rem;
+    margin-left: auto; /* Căn chỉnh lại cho timeline bên trái */
+    margin-right: auto; /* Căn chỉnh lại cho timeline bên phải */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-left: 4px solid var(--primary-color);
 }
@@ -168,7 +189,7 @@
     right: -23px;
 }
 
-.timeline-right .timeline-item:before {
+.timeline-right .timeline-item:before
     left: -23px;
 }
 
@@ -231,18 +252,19 @@
 @media (max-width: 1024px) {
     .split-timeline {
         flex-direction: column;
-        gap: 3rem;
+        gap: 3.5rem;
     }
     
     .timeline-center {
         order: -1;
-        margin: 0 0 3rem 0;
+        margin: 0 0 3.5rem 0;
     }
     
     .timeline-left, .timeline-right {
-        padding-left: 40px;
-        padding-top: 10px;
-        padding-bottom: 30px;
+        padding-left: 45px;
+        padding-top: 15px;
+        padding-bottom: 35px;
+        gap: 5rem; /* Điều chỉnh khoảng cách trên màn hình tablet */
     }
     
     .timeline-left:after, .timeline-right:after {
@@ -268,6 +290,9 @@
         margin-bottom: 1rem;
         min-width: 170px; /* Đảm bảo chiều rộng tối thiểu cho chế độ hiển thị dạng cột */
     }
+      img.timeline-date {
+        max-width: 260px; /* Tăng kích thước trên màn hình trung bình */
+    }
     
     .timeline-left .timeline-content {
         text-align: left;
@@ -287,8 +312,8 @@
 
 @media (max-width: 768px) {
     .timeline-left, .timeline-right {
-        padding-left: 35px;
-        gap: 2rem;
+        padding-left: 38px;
+        gap: 4rem; /* Điều chỉnh khoảng cách cho màn hình nhỏ hơn */
     }
     
     .timeline-content {
@@ -303,25 +328,28 @@
         width: 25px;
         left: -35px;
     }
+      img.timeline-date {
+        max-width: 220px; /* Tăng kích thước trên màn hình tablet */
+    }
 }
 
 @media (max-width: 576px) {
     .timeline-left, .timeline-right {
-        padding-left: 30px;
+        padding-left: 33px;
+        gap: 3.5rem; /* Điều chỉnh khoảng cách cho điện thoại */
     }
     
     .timeline-date {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-        min-width: 130px; /* Điều chỉnh chiều rộng tối thiểu cho màn hình nhỏ */
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+        min-width: 130px;
+    }
+      img.timeline-date {
+        max-width: 180px; /* Tăng kích thước trên màn hình nhỏ */
     }
     
     .timeline-content {
         padding: 1rem;
-    }
-    
-    .center-image {
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
     
     .timeline-left .timeline-item:before, .timeline-right .timeline-item:before {
@@ -333,6 +361,19 @@
     .timeline-left .timeline-item:after, .timeline-right .timeline-item:after {
         width: 20px;
         left: -30px;
+    }
+}
+
+@media (max-width: 480px) {    img.timeline-date {
+        max-width: 150px; /* Tăng kích thước trên màn hình rất nhỏ */
+    }
+    
+    .timeline-content h4 {
+        font-size: 1.1rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.95rem;
     }
 }
 
@@ -407,6 +448,15 @@
         grid-template-columns: 1fr 1fr;
         padding: 0 1.5rem;
     }
+    
+    /* Responsive cho timeline images */
+    img.timeline-date {
+        max-width: 400px;
+    }
+    
+    .split-timeline {
+        gap: 40px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -420,6 +470,20 @@
     
     .process-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Responsive cho timeline images */
+    img.timeline-date {
+        max-width: 320px;
+    }
+    
+    .timeline-content {
+        width: 90%;
+        max-width: 300px;
+    }
+    
+    .timeline-left, .timeline-right {
+        gap: 6rem;
     }
 }
 
@@ -436,5 +500,57 @@
     
     .process-step h4 {
         font-size: 1.3rem;
+    }
+    
+    .production-process h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.8rem;
+    }
+    
+    .process-step p {
+        font-size: 0.95rem;
+    }
+    
+    /* Responsive cho timeline images */
+    img.timeline-date {
+        max-width: 280px;
+    }
+    
+    .timeline-content {
+        padding: 1.5rem;
+        max-width: 250px;
+    }
+    
+    .timeline-left, .timeline-right {
+        gap: 5rem;
+        padding: 40px 0;
+    }
+    
+    .split-timeline {
+        gap: 30px;
+    }
+}
+
+/* For extra small screens */
+@media (max-width: 480px) {
+    img.timeline-date {
+        max-width: 230px;
+    }
+    
+    .timeline-content {
+        max-width: 220px;
+        padding: 1.2rem;
+    }
+    
+    .timeline-content h4 {
+        font-size: 1.1rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+    
+    .timeline-left, .timeline-right {
+        gap: 4rem;
     }
 }

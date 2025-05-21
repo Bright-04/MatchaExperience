@@ -4,7 +4,7 @@ const navLinks = document.querySelectorAll(".nav-link");
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
 const hamburger = document.querySelector(".hamburger");
-const logo = document.querySelector(".logo h1");
+const logo = document.querySelector(".logo img");
 
 // Create a glow effect for the active nav element
 function createNavGlowEffect() {

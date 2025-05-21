@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const modalRecipeSubtitle = document.getElementById('modal-recipe-subtitle');
 	const modalRecipeFeatures = document.getElementById('modal-recipe-features');
 	const modalRecipeInstructions = document.getElementById('modal-recipe-instructions');
+	const modalContent = document.querySelector('.recipe-modal-content'); // Added for animation
 
 	// Recipe data
 	const recipeData = {
@@ -138,9 +139,15 @@ document.addEventListener("DOMContentLoaded", function () {
 	};
 
 	// Open modal with recipe details
-	function openRecipeModal(recipeId) {
+	function openRecipeModal(recipeId, sourceElement = null) {
 		const recipe = recipeData[recipeId];
 		if (!recipe) return;
+		
+		// Get position info for animation if we have a source element
+		let startRect = null;
+		if (sourceElement) {
+			startRect = sourceElement.getBoundingClientRect();
+		}
 		
 		modalRecipeImg.src = recipe.image;
 		modalRecipeImg.alt = recipe.title;
@@ -166,19 +173,53 @@ document.addEventListener("DOMContentLoaded", function () {
 		// Show modal
 		recipeModal.classList.add('active');
 		document.body.classList.add('no-scroll');
+		
+		// Apply popup animation if we have source coordinates
+		if (startRect) {
+			const modalRect = modalContent.getBoundingClientRect();
+			
+			// Reset any previous animations
+			modalContent.style.transition = 'none';
+			modalContent.style.transform = 'scale(0.5) translateY(100px)';
+			modalContent.style.opacity = '0';
+			
+			// Force reflow to ensure the previous style changes apply
+			void modalContent.offsetWidth;
+			
+			// Apply the animation
+			modalContent.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease';
+			modalContent.style.transformOrigin = 'center center';
+			modalContent.style.transform = 'scale(1) translateY(0)';
+			modalContent.style.opacity = '1';
+		}
 	}
 
 	// Close modal
 	function closeRecipeModal() {
-		recipeModal.classList.remove('active');
-		document.body.classList.remove('no-scroll');
+		// Add closing animation
+		modalContent.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+		modalContent.style.transform = 'scale(0.9) translateY(20px)';
+		modalContent.style.opacity = '0';
+		
+		// Delay actual closing to allow animation to complete
+		setTimeout(() => {
+			recipeModal.classList.remove('active');
+			document.body.classList.remove('no-scroll');
+			
+			// Reset transform after closing for next opening
+			setTimeout(() => {
+				modalContent.style.transition = 'none';
+				modalContent.style.transform = '';
+				modalContent.style.opacity = '';
+			}, 100);
+		}, 250);
 	}
 
 	// Event listeners for recipe cards
 	recipeCards.forEach(card => {
 		card.addEventListener('click', () => {
 			const recipeId = card.getAttribute('data-recipe');
-			openRecipeModal(recipeId);
+			openRecipeModal(recipeId, card); // Pass the card element for animation
 		});
 	});
 

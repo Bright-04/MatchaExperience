@@ -6,16 +6,19 @@
     position: relative;
     gap: 70px; /* Tăng khoảng cách giữa các cột */
     align-items: stretch;
+    min-height: 800px; /* Ensure enough height for sticky behavior */
+    overflow: visible; /* Allow sticky element to break out of container */
 }
 
 /* History section title */
 .history .section-title {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 4.5rem; /* Further increase bottom margin from 3rem to 4.5rem */
     position: relative;
     text-align: center;
     color: var(--primary-color);
     padding-bottom: 1rem;
+    z-index: 10; /* Ensure title stays above the sticky image */
 }
 
 .history .section-title:after {
@@ -44,11 +47,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 1.5rem;
     position: relative;
-    align-self: center;
+    align-self: stretch;
     margin: 40px 0;
+    min-height: 1200px; /* Increased height to provide more scrolling area */
+    z-index: 1;
+    margin-top: 120px; /* Increase additional margin from 80px to 120px */
 }
 
 .center-image {
@@ -56,14 +61,17 @@
     height: auto;
     border-radius: 12px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.22);
-    position: relative;
-    z-index: 2;
-    transition: transform 0.4s ease;
+    position: sticky; /* Enable sticky positioning */
+    top: 65vh; /* Move down further from 60vh to 65vh */
+    transform: translateY(-50%); /* Adjust to truly center the image */
+    z-index: 5; /* Higher z-index to ensure image appears above other content */
+    transition: all 0.4s ease;
     margin: 0 -10%;
+    will-change: transform; /* Optimize for animations and positioning */
 }
 
 .center-image:hover {
-    transform: scale(1.05);
+    transform: translateY(-50%) scale(1.05); /* Keep vertical centering while scaling */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
@@ -189,7 +197,7 @@ img.timeline-date:hover {
     right: -23px;
 }
 
-.timeline-right .timeline-item:before
+.timeline-right .timeline-item:before {
     left: -23px;
 }
 
@@ -256,15 +264,21 @@ img.timeline-date:hover {
     }
     
     .timeline-center {
-        order: -1;
-        margin: 0 0 3.5rem 0;
+        margin: 20px auto;
+        padding: 0;
+        min-height: auto;
+        position: relative;
     }
     
-    .timeline-left, .timeline-right {
-        padding-left: 45px;
-        padding-top: 15px;
-        padding-bottom: 35px;
-        gap: 5rem; /* Điều chỉnh khoảng cách trên màn hình tablet */
+    .center-image {
+        position: static;
+        max-width: 90%;
+        margin: 0 auto;
+        transform: none;
+    }
+    
+    .center-image:hover {
+        transform: scale(1.05);
     }
     
     .timeline-left:after, .timeline-right:after {
@@ -311,60 +325,80 @@ img.timeline-date:hover {
 }
 
 @media (max-width: 768px) {
-    .timeline-left, .timeline-right {
-        padding-left: 38px;
-        gap: 4rem; /* Điều chỉnh khoảng cách cho màn hình nhỏ hơn */
+    .production-process {
+        padding: 2rem 0;
+    }
+
+    .process-step {
+        padding: 1.8rem;
+    }
+    
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Responsive cho timeline images */
+    img.timeline-date {
+        max-width: 320px;
     }
     
     .timeline-content {
-        padding: 1.2rem;
+        width: 90%;
+        max-width: 300px;
     }
     
-    .timeline-left .timeline-item:before, .timeline-right .timeline-item:before {
-        left: -43px;
-    }
-    
-    .timeline-left .timeline-item:after, .timeline-right .timeline-item:after {
-        width: 25px;
-        left: -35px;
-    }
-      img.timeline-date {
-        max-width: 220px; /* Tăng kích thước trên màn hình tablet */
+    .timeline-left, .timeline-right {
+        gap: 6rem;
     }
 }
 
 @media (max-width: 576px) {
-    .timeline-left, .timeline-right {
-        padding-left: 33px;
-        gap: 3.5rem; /* Điều chỉnh khoảng cách cho điện thoại */
+    .process-step {
+        padding: 1.5rem;
     }
     
-    .timeline-date {
-        font-size: 0.9rem;
-        padding: 0.5rem 0.8rem;
-        min-width: 130px;
+    .step-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
     }
-      img.timeline-date {
-        max-width: 180px; /* Tăng kích thước trên màn hình nhỏ */
+    
+    .process-step h4 {
+        font-size: 1.3rem;
+    }
+    
+    .production-process h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.8rem;
+    }
+    
+    .process-step p {
+        font-size: 0.95rem;
+    }
+    
+    /* Responsive cho timeline images */
+    img.timeline-date {
+        max-width: 280px;
     }
     
     .timeline-content {
-        padding: 1rem;
+        padding: 1.5rem;
+        max-width: 250px;
     }
     
-    .timeline-left .timeline-item:before, .timeline-right .timeline-item:before {
-        width: 12px;
-        height: 12px;
-        left: -36px;
+    .timeline-left, .timeline-right {
+        gap: 5rem;
+        padding: 40px 0;
     }
     
-    .timeline-left .timeline-item:after, .timeline-right .timeline-item:after {
-        width: 20px;
-        left: -30px;
+    .split-timeline {
+        gap: 30px;
     }
 }
 
-@media (max-width: 480px) {    img.timeline-date {
+/* For extra small screens */
+@media (max-width: 480px) {
+    img.timeline-date {
         max-width: 150px; /* Tăng kích thước trên màn hình rất nhỏ */
     }
     
@@ -554,3 +588,23 @@ img.timeline-date:hover {
         gap: 4rem;
     }
 }
+
+
+/* History section container */
+.history {
+    min-height: 1500px; /* Ensure section has enough height for sticky behavior */
+    position: relative;
+    overflow: visible;
+}
+
+
+/* Add a small enhancement to the history section to make it more modern */
+.history {
+    scroll-behavior: smooth;
+}
+
+/* Improve spacing in history wrapper */
+.history-wrapper {
+    padding-top: 40px; /* Increase padding from 20px to 40px */
+}
+

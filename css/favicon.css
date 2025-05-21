@@ -1,0 +1,14 @@
+/* 
+ * Matcha Leaf Favicon CSS
+ * This CSS defines a favicon using data URL with a green leaf emoji
+ * It can be included in the head section of your HTML
+ */
+
+/* 
+ * Implementation note:
+ * The matcha-favicon class isn't directly used, but this file is meant to be
+ * referenced from the HTML file to provide the favicon functionality
+ */
+.matcha-favicon {
+  display: none;
+}

@@ -29,7 +29,25 @@ body {
 	line-height: 1.6;
 	color: var(--text-color);
 	background-color: var(--white);
+	background-image: url("../images/matcha-collage.jpg");
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 	overflow-x: hidden;
+	position: relative;
+}
+
+/* Add a semi-transparent overlay to ensure text is readable */
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.40); /* Reduced opacity to make background more visible */
+	z-index: -1;
 }
 
 .container {
@@ -54,12 +72,25 @@ ul {
 	list-style: none;
 }
 
+/* Add section styling for all sections to work with the background image */
+section {
+	background-color: rgba(255, 255, 255, 0.75);
+	margin: 20px 10px;
+	padding: 40px 20px;
+	border-radius: 10px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+}
+
 .section-title {
 	font-size: 2.5rem;
 	text-align: center;
 	margin-bottom: 2rem;
 	color: var(--text-color);
 	position: relative;
+	text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8); /* Added text shadow for better contrast */
 }
 
 .section-title::after {
@@ -82,14 +113,13 @@ button {
 	left: 0;
 	width: 100%;
 	z-index: 1000;
-	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-	background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(232, 245, 233, 0.9), rgba(200, 230, 201, 0.85));
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);	background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(232, 245, 233, 0.90), rgba(200, 230, 201, 0.85));
 	background-size: 200% 200%;
 	animation: gradientFlow 15s ease infinite;
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
-	box-shadow: 0 5px 25px rgba(76, 175, 80, 0.18);
-	border-bottom: 1px solid rgba(76, 175, 80, 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	box-shadow: 0 5px 25px rgba(56, 142, 60, 0.25);
+	border-bottom: 1px solid rgba(76, 175, 80, 0.15);
 }
 
 @keyframes gradientFlow {
@@ -322,7 +352,27 @@ button {
 	box-shadow: 0 3px 8px rgba(76, 175, 80, 0.1);
 }
 
-/* Removed duplicate indicator */
+/* Removed duplicate CSS indicator
+.nav-link::after {
+	content: "";
+	position: absolute;
+	bottom: -4px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 5px;
+	height: 3px;
+	background-color: var(--primary-color);
+	border-radius: 10px;
+	opacity: 0;
+	transition: all 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+	width: 35px;
+	opacity: 1;
+}
+*/
 
 .pulse-indicator {
 	position: absolute;
@@ -336,6 +386,8 @@ button {
 	animation: pulseGlow 2s infinite;
 	opacity: 0.8;
 	z-index: 1;
+	transition: all 0.3s ease; /* Smooth transition when moving */
+	pointer-events: none; /* Ensure it doesn't interfere with clicks */
 }
 
 @keyframes pulseGlow {
@@ -369,11 +421,14 @@ main {
 
 /* Hero Section */
 .hero {
-	background-color: var(--primary-light);
+	background-color: rgba(232, 245, 233, 0.9); /* Semi-transparent background */
 	padding: 5rem 0;
 	position: relative;
 	overflow: hidden;
-	background-image: linear-gradient(135deg, var(--primary-light) 0%, #d7f0da 100%);
+	backdrop-filter: blur(3px); /* Slight blur effect */
+	-webkit-backdrop-filter: blur(3px);
+	border-radius: 10px;
+	margin: 0 10px; /* Add a small margin from the edges */
 }
 
 .hero::before {
@@ -636,7 +691,7 @@ main {
 /* Effects Section */
 .effects {
 	padding: 5rem 0;
-	background-color: var(--primary-light);
+    background-color: rgba(232, 245, 233, 0.8); /* --primary-light with 80% opacity */
 }
 
 .effects-wrapper {
@@ -1300,11 +1355,11 @@ main {
 		background-color: rgba(255, 255, 255, 0.5);
 		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 	}
-	
-	.nav-link::before {
+		.nav-link::before {
 		display: none;
 	}
-		.nav-link::after {
+	/* Removed duplicate indicator for mobile
+	.nav-link::after {
 		bottom: auto;
 		top: 50%;
 		left: 20px;
@@ -1318,6 +1373,7 @@ main {
 		height: 8px;
 		border-radius: 50%;
 	}
+	*/
 
 	.nav-link:hover,
 	.nav-link.active {
@@ -1327,10 +1383,16 @@ main {
 		border-color: rgba(76, 175, 80, 0.3);
 	}
 	
-	.nav-link:hover::after,
-	.nav-link.active::after {
-		opacity: 1;
+	/* Removed duplicate indicator rules */
+	
+	/* Position the pulse indicator for mobile view */
+	.pulse-indicator {
+		bottom: auto;
+		left: 10px;
+		transform: translateX(0);
 		width: 8px;
+		height: 8px;
+		border-radius: 50%;
 	}
 
 	.hero .container {
@@ -1434,8 +1496,8 @@ main {
 
 /* History & Origin Section Styles */
 .history {
-	background-color: var(--primary-light);
-	padding: 5rem 0;
+    background-color: rgba(232, 245, 233, 0.8); /* --primary-light with 80% opacity */
+    padding: 5rem 0;
 }
 
 .history-wrapper {
@@ -1577,7 +1639,7 @@ main {
 /* Tiers Section */
 .tiers {
 	padding: 5rem 0;
-	background-color: var(--primary-light);
+    background-color: rgba(232, 245, 233, 0.8); /* --primary-light with 80% opacity */
 }
 
 .tiers-intro {
@@ -1706,7 +1768,7 @@ main {
 /* Recipes Section */
 .recipes {
 	padding: 5rem 0;
-	background-color: #f9f9f9;
+    background-color: rgba(232, 245, 233, 0.8); /* --primary-light with 80% opacity */
 }
 
 .recipes-intro {
@@ -1994,4 +2056,29 @@ main {
 	.recipe-modal-title h3 {
 		font-size: 1.5rem;
 	}
+}
+
+/* Add responsive behavior for background image */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll; /* Better performance on mobile */
+    }
+    
+    section {
+        margin: 15px 5px;
+        padding: 30px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        margin: 10px 5px;
+        padding: 25px 10px;
+        background-color: rgba(255, 255, 255, 0.80); /* Slightly more opaque on small screens for readability */
+    }
+    
+    /* Adjust the overlay opacity for better readability on smaller screens */
+    body::before {
+        background-color: rgba(255, 255, 255, 0.85); /* Still reduced but ensuring readability on mobile */
+    }
 }

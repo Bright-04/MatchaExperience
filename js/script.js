@@ -243,20 +243,32 @@ document.addEventListener("DOMContentLoaded", function () {
 			closeRecipeModal();
 		}
 	});
-
 	// Active link highlighting on scroll
 	function highlightActiveLink() {
 		const sections = document.querySelectorAll("section");
 		const scrollPosition = window.scrollY + 100; // Offset for better accuracy
-
+		
+		// First remove all active classes to prevent duplicates
+		navLinks.forEach((link) => {
+			link.classList.remove("active");
+		});
+		
+		document.querySelectorAll(".quick-nav-item").forEach((item) => {
+			item.classList.remove("active");
+		});
+		
+		// Variable to track if any section is active
+		let activeFound = false;
+		
+		// Find the active section
 		sections.forEach((section) => {
 			const sectionTop = section.offsetTop;
 			const sectionHeight = section.offsetHeight;
 			const sectionId = section.getAttribute("id");
 
-			if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+			if (!activeFound && scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+				// Set active class for nav links
 				navLinks.forEach((link) => {
-					link.classList.remove("active");
 					if (link.getAttribute("href") === `#${sectionId}`) {
 						link.classList.add("active");
 					}
@@ -264,16 +276,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 				// Also highlight quick navigation items
 				document.querySelectorAll(".quick-nav-item").forEach((item) => {
-					item.classList.remove("active");
 					if (item.getAttribute("href") === `#${sectionId}`) {
 						item.classList.add("active");
 					}
 				});
+				
+				// Mark that we found an active section
+				activeFound = true;
 			}
 		});
 	}
 
-	window.addEventListener("scroll", highlightActiveLink);
+	// Initialize manual scroll state
+	window.isManualScroll = true;
+	
+	// Only highlight links on manual scrolling
+	window.addEventListener("scroll", function() {
+		if (window.isManualScroll) {
+			highlightActiveLink();
+		}
+	});
 
 	// Contact Form Submission
 	const contactForm = document.getElementById("contactForm");
@@ -334,20 +356,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Initial call to set active link on page load
 	highlightActiveLink();
-
 	// Smooth scrolling for navigation links
 	document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 		anchor.addEventListener("click", function (e) {
 			e.preventDefault();
 
+			// Clear all active classes first
+			navLinks.forEach((link) => {
+				link.classList.remove("active");
+			});
+			
+			document.querySelectorAll(".quick-nav-item").forEach((item) => {
+				item.classList.remove("active");
+			});
+			
+			// Set this link as active
+			this.classList.add("active");
+
 			const targetId = this.getAttribute("href").substring(1);
 			const targetElement = document.getElementById(targetId);
 
 			if (targetElement) {
+				// Add a flag to prevent duplicate highlighting during smooth scroll
+				window.isManualScroll = false;
+				
 				window.scrollTo({
 					top: targetElement.offsetTop - 80,
 					behavior: "smooth",
 				});
+				
+				// Reset the flag after scrolling completes
+				setTimeout(() => {
+					window.isManualScroll = true;
+				}, 1000); // Typical smooth scroll duration
 			}
 		});
 	});

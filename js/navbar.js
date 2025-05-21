@@ -80,6 +80,32 @@ function addPulseAnimationToActiveLink() {
     });
 }
 
+// Function to update the position of the indicators
+function updateIndicatorPosition() {
+    const activeLink = document.querySelector(".nav-link.active");
+    if (activeLink) {
+        // Update the pulse-indicator element
+        const indicator = activeLink.querySelector(".pulse-indicator");
+        if (indicator) {
+            // Check if we're in mobile view
+            if (window.innerWidth <= 768) {
+                // Mobile positioning
+                indicator.style.left = "10px";
+                indicator.style.transform = "translateX(0)";
+            } else {
+                // Desktop positioning
+                indicator.style.left = "50%";
+                indicator.style.transform = "translateX(-50%)";
+            }
+            
+            // Force a repaint to ensure smooth animation
+            indicator.style.display = "none";
+            indicator.offsetHeight; // Trigger a reflow
+            indicator.style.display = "block";
+        }
+    }
+}
+
 // Add scroll event listener
 window.addEventListener("scroll", handleScroll);
 
@@ -107,6 +133,9 @@ navLinks.forEach((link) => {
 		    removeGlowEffect = createNavGlowEffect();
 		}
 		addPulseAnimationToActiveLink();
+		
+		// Ensure indicator follows the newly active link
+		setTimeout(updateIndicatorPosition, 10);
 	});
 });
 
@@ -133,6 +162,9 @@ function highlightNavLink() {
 		}
 	});
 	
+	// Always update indicator position on scroll to follow user
+	updateIndicatorPosition();
+	
 	// Update glow position if active link changed
 	if (activeChanged && removeGlowEffect) {
 		removeGlowEffect();
@@ -144,18 +176,32 @@ function highlightNavLink() {
 // Initialize glow effect
 let removeGlowEffect = createNavGlowEffect();
 
-window.addEventListener("scroll", highlightNavLink);
+// Add throttled scroll event for better performance
+let scrollTimeout;
+window.addEventListener("scroll", () => {
+    if (!scrollTimeout) {
+        scrollTimeout = setTimeout(() => {
+            highlightNavLink();
+            scrollTimeout = null;
+        }, 10); // Small timeout for better performance
+    }
+});
+
 window.addEventListener("load", () => {
     highlightNavLink();
     addPulseAnimationToActiveLink();
+    updateIndicatorPosition();
 });
+
 window.addEventListener("resize", () => {
     if (removeGlowEffect) {
         removeGlowEffect();
         removeGlowEffect = createNavGlowEffect();
     }
     addPulseAnimationToActiveLink();
+    updateIndicatorPosition();
 });
 
-// Initial call to add pulse animation
+// Initial calls to add pulse animation and set indicator position
 addPulseAnimationToActiveLink();
+updateIndicatorPosition();

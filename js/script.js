@@ -51,19 +51,224 @@ document.addEventListener("DOMContentLoaded", function () {
 			body.classList.remove("no-scroll");
 		});
 	});
+
+	// Recipe Modal Functionality
+	const recipeCards = document.querySelectorAll('.recipe-card');
+	const recipeModal = document.querySelector('.recipe-modal');
+	const recipeModalClose = document.querySelector('.recipe-modal-close');
+	const modalRecipeImg = document.getElementById('modal-recipe-img');
+	const modalRecipeTitle = document.getElementById('modal-recipe-title');
+	const modalRecipeSubtitle = document.getElementById('modal-recipe-subtitle');
+	const modalRecipeFeatures = document.getElementById('modal-recipe-features');
+	const modalRecipeInstructions = document.getElementById('modal-recipe-instructions');
+	const modalContent = document.querySelector('.recipe-modal-content'); // Added for animation
+
+	// Recipe data
+	const recipeData = {
+		'usucha': {
+			title: 'Usucha',
+			subtitle: 'Truyền thống Nhật Bản',
+			image: 'images/usucha.jpg',
+			features: [
+				'Đây là cách thưởng thức matcha truyền thống của Nhật Bản',
+				'Có thể cảm nhận được vị thuần túy của matcha mà không bị các nguyên liệu khác lấn át'
+			],
+			instructions: [
+				'Ngâm <em>chasen</em> (chổi tre) trước trong nước ấm để các nan tre nở ra',
+				'Sử dụng <em>chashaku</em> (muỗng tre) cho khoảng 2-4g matcha vào <em>chawan</em> (bát trà)',
+				'Sau đó cho vào 60-80ml nước ấm ở nhiệt độ 70–85°C',
+				'Hỗn hợp nước và bột trà được đánh tan hoàn toàn bằng <em>chasen</em> theo hình Zigzag để bọt lên đều và không vón cục',
+				'Khi thưởng thức, <em>usucha</em> được dùng kèm với một chiếc bánh <em>wagashi</em> nhỏ để cân bằng vị đắng'
+			]
+		},
+		'matcha-latte': {
+			title: 'Matcha Latte',
+			subtitle: 'Fusion Á - Âu',
+			image: 'images/matcha-latte.jpg',
+			features: [
+				'Sự pha trộn giữa matcha truyền thống Nhật Bản và sữa tươi (hoặc các loại sữa hạt) phổ biến trong văn hóa cà phê phương Tây',
+				'Vị đắng đặc trưng của matcha được làm dịu đi bởi vị béo ngậy của sữa',
+				'Có thể điều chỉnh độ ngọt, thêm các loại syrup hoặc mứt theo sở thích cá nhân',
+				'Có thể dùng nóng hoặc lạnh'
+			],
+			instructions: [
+				'Sử dụng <em>chashaku</em> cho khoảng 3-5g matcha vào <em>chawan</em>',
+				'Sau đó cho vào 30-50ml nước ấm ở nhiệt độ 70–85°C',
+				'Dùng <em>chasen</em> (đã ngâm nước ấm) đánh tan hoàn toàn bột matcha với nước cho đến khi không còn vón cục và có một lớp bọt mỏng trên bề mặt',
+				'Thêm 120-180ml sữa tươi (hoặc sữa thực vật như hạnh nhân, yến mạch, đậu nành) tùy theo nhu cầu',
+				'Rót ra ly, thêm đá và thưởng thức',
+				'Có thể thêm đường, mật ong, hoặc các loại syrup khác để tăng độ ngọt'
+			]
+		},
+		'london-fog': {
+			title: 'London Fog',
+			subtitle: 'Fusion Đông - Tây',
+			image: 'images/london-fog.jpg',
+			features: [
+				'Đậm vị trà do sự kết hợp giữa trà Earl Grey và Matcha giúp tăng độ tỉnh táo',
+				'Mang lại sự mơ màng trong cả vị giác và hình thức, được ví như màn sương mù của thành phố London, Anh',
+				'Không khuyến cáo sử dụng ban đêm và với người có triệu chứng về tim mạch, khó ngủ'
+			],
+			instructions: [
+				'<strong>Pha syrup earl grey:</strong> Đun sôi hỗn hợp đường, nước, trà với tỉ lệ 1:1:1 đến khi sệt lại. Sau đó để nguội và có thể giữ trong tủ lạnh trong vòng 2 tuần',
+				'Pha 1 gói trà earl grey túi lọc với 50ml nước ấm',
+				'Sử dụng <em>chashaku</em> cho khoảng 3-5g matcha vào <em>chawan</em>',
+				'Sau đó cho vào 30-50ml nước ấm ở nhiệt độ 70–85°C',
+				'Dùng <em>chasen</em> (đã ngâm nước ấm) đánh tan hoàn toàn bột matcha với nước cho đến khi không còn vón cục và có một lớp bọt mỏng trên bề mặt',
+				'Lần lượt cho syrup earl grey, trà earl grey và đá vào ly. Sau đó cho matcha lên trên cùng và thưởng thức'
+			]
+		},
+		'cold-whisked': {
+			title: 'Cold-Whisked Matcha Latte',
+			subtitle: 'Phong cách hiện đại',
+			image: 'images/cold-whisked-matcha-latte.jpg',
+			features: [
+				'Khá giống với matcha latte thông thường nhưng có hương vị đậm đà hơn',
+				'Chỉ có thể uống lạnh',
+				'Phù hợp với người bận rộn vì không cần dùng nước ấm'
+			],
+			instructions: [
+				'Sử dụng <em>chashaku</em> cho khoảng 4-5g matcha vào cốc',
+				'Sau đó cho vào 30-50ml sữa tươi (hoặc các loại sữa hạt tùy theo nhu cầu)',
+				'Dùng <em>frother</em> đánh tan hoàn toàn bột matcha với sữa cho đến khi không còn vón cục và có một lớp bọt mỏng trên bề mặt',
+				'Thêm 120-180ml sữa tươi (hoặc sữa thực vật như hạnh nhân, yến mạch, đậu nành) tùy theo nhu cầu',
+				'Rót ra ly, thêm đá và thưởng thức',
+				'Có thể thêm đường, mật ong, hoặc các loại syrup khác để tăng độ ngọt'
+			]
+		}
+	};
+
+	// Open modal with recipe details
+	function openRecipeModal(recipeId, sourceElement = null) {
+		const recipe = recipeData[recipeId];
+		if (!recipe) return;
+		
+		// Get position info for animation if we have a source element
+		let startRect = null;
+		if (sourceElement) {
+			startRect = sourceElement.getBoundingClientRect();
+		}
+		
+		modalRecipeImg.src = recipe.image;
+		modalRecipeImg.alt = recipe.title;
+		modalRecipeTitle.textContent = recipe.title;
+		modalRecipeSubtitle.textContent = recipe.subtitle;
+		
+		// Clear and populate features
+		modalRecipeFeatures.innerHTML = '';
+		recipe.features.forEach(feature => {
+			const li = document.createElement('li');
+			li.innerHTML = feature;
+			modalRecipeFeatures.appendChild(li);
+		});
+		
+		// Clear and populate instructions
+		modalRecipeInstructions.innerHTML = '';
+		recipe.instructions.forEach(instruction => {
+			const li = document.createElement('li');
+			li.innerHTML = instruction;
+			modalRecipeInstructions.appendChild(li);
+		});
+		
+		// Show modal
+		recipeModal.classList.add('active');
+		document.body.classList.add('no-scroll');
+		
+		// Apply popup animation if we have source coordinates
+		if (startRect) {
+			const modalRect = modalContent.getBoundingClientRect();
+			
+			// Reset any previous animations
+			modalContent.style.transition = 'none';
+			modalContent.style.transform = 'scale(0.5) translateY(100px)';
+			modalContent.style.opacity = '0';
+			
+			// Force reflow to ensure the previous style changes apply
+			void modalContent.offsetWidth;
+			
+			// Apply the animation
+			modalContent.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease';
+			modalContent.style.transformOrigin = 'center center';
+			modalContent.style.transform = 'scale(1) translateY(0)';
+			modalContent.style.opacity = '1';
+		}
+	}
+
+	// Close modal
+	function closeRecipeModal() {
+		// Add closing animation
+		modalContent.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+		modalContent.style.transform = 'scale(0.9) translateY(20px)';
+		modalContent.style.opacity = '0';
+		
+		// Delay actual closing to allow animation to complete
+		setTimeout(() => {
+			recipeModal.classList.remove('active');
+			document.body.classList.remove('no-scroll');
+			
+			// Reset transform after closing for next opening
+			setTimeout(() => {
+				modalContent.style.transition = 'none';
+				modalContent.style.transform = '';
+				modalContent.style.opacity = '';
+			}, 100);
+		}, 250);
+	}
+
+	// Event listeners for recipe cards
+	recipeCards.forEach(card => {
+		card.addEventListener('click', () => {
+			const recipeId = card.getAttribute('data-recipe');
+			openRecipeModal(recipeId, card); // Pass the card element for animation
+		});
+	});
+
+	// Close modal when clicking close button
+	if (recipeModalClose) {
+		recipeModalClose.addEventListener('click', closeRecipeModal);
+	}
+
+	// Close modal when clicking outside of modal content
+	if (recipeModal) {
+		recipeModal.addEventListener('click', (e) => {
+			if (e.target === recipeModal) {
+				closeRecipeModal();
+			}
+		});
+	}
+
+	// Close modal with ESC key
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && recipeModal.classList.contains('active')) {
+			closeRecipeModal();
+		}
+	});
 	// Active link highlighting on scroll
 	function highlightActiveLink() {
 		const sections = document.querySelectorAll("section");
 		const scrollPosition = window.scrollY + 100; // Offset for better accuracy
-
+		
+		// First remove all active classes to prevent duplicates
+		navLinks.forEach((link) => {
+			link.classList.remove("active");
+		});
+		
+		document.querySelectorAll(".quick-nav-item").forEach((item) => {
+			item.classList.remove("active");
+		});
+		
+		// Variable to track if any section is active
+		let activeFound = false;
+		
+		// Find the active section
 		sections.forEach((section) => {
 			const sectionTop = section.offsetTop;
 			const sectionHeight = section.offsetHeight;
 			const sectionId = section.getAttribute("id");
 
-			if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+			if (!activeFound && scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+				// Set active class for nav links
 				navLinks.forEach((link) => {
-					link.classList.remove("active");
 					if (link.getAttribute("href") === `#${sectionId}`) {
 						link.classList.add("active");
 					}
@@ -71,16 +276,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 				// Also highlight quick navigation items
 				document.querySelectorAll(".quick-nav-item").forEach((item) => {
-					item.classList.remove("active");
 					if (item.getAttribute("href") === `#${sectionId}`) {
 						item.classList.add("active");
 					}
 				});
+				
+				// Mark that we found an active section
+				activeFound = true;
 			}
 		});
 	}
 
-	window.addEventListener("scroll", highlightActiveLink);
+	// Initialize manual scroll state
+	window.isManualScroll = true;
+	
+	// Only highlight links on manual scrolling
+	window.addEventListener("scroll", function() {
+		if (window.isManualScroll) {
+			highlightActiveLink();
+		}
+	});
 
 	// Contact Form Submission
 	const contactForm = document.getElementById("contactForm");
@@ -141,20 +356,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Initial call to set active link on page load
 	highlightActiveLink();
-
 	// Smooth scrolling for navigation links
 	document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 		anchor.addEventListener("click", function (e) {
 			e.preventDefault();
 
+			// Clear all active classes first
+			navLinks.forEach((link) => {
+				link.classList.remove("active");
+			});
+			
+			document.querySelectorAll(".quick-nav-item").forEach((item) => {
+				item.classList.remove("active");
+			});
+			
+			// Set this link as active
+			this.classList.add("active");
+
 			const targetId = this.getAttribute("href").substring(1);
 			const targetElement = document.getElementById(targetId);
 
 			if (targetElement) {
+				// Add a flag to prevent duplicate highlighting during smooth scroll
+				window.isManualScroll = false;
+				
 				window.scrollTo({
 					top: targetElement.offsetTop - 80,
 					behavior: "smooth",
 				});
+				
+				// Reset the flag after scrolling completes
+				setTimeout(() => {
+					window.isManualScroll = true;
+				}, 1000); // Typical smooth scroll duration
 			}
 		});
 	});

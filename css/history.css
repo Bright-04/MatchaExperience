@@ -1,102 +1,573 @@
 /* History section specific styles */
-.timeline {
+.split-timeline {
+    display: flex;
+    max-width: 1400px; /* Tăng độ rộng tối đa thêm nữa */
+    margin: 4rem auto;
     position: relative;
-    max-width: 1000px;
-    margin: 2rem auto;
-    list-style: none;
+    gap: 70px; /* Tăng khoảng cách giữa các cột */
+    align-items: stretch;
+    min-height: 800px; /* Ensure enough height for sticky behavior */
+    overflow: visible; /* Allow sticky element to break out of container */
 }
 
-.timeline::before {
+/* History section title */
+.history .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 4.5rem; /* Further increase bottom margin from 3rem to 4.5rem */
+    position: relative;
+    text-align: center;
+    color: var(--primary-color);
+    padding-bottom: 1rem;
+    z-index: 10; /* Ensure title stays above the sticky image */
+}
+
+.history .section-title:after {
     content: "";
     position: absolute;
-    top: 0;
     bottom: 0;
-    left: 120px; /* Increased from 50px to align with wider date labels */
-    width: 4px;
-    background: var(--primary-color);
-    margin-left: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
 }
 
-.timeline li {
-    margin-bottom: 2.5rem;
-    position: relative;
+.timeline-left, .timeline-right {
+    flex: 1;
     display: flex;
-    padding-left: 150px; /* Increased from 80px to accommodate wider date labels */
+    flex-direction: column;
+    gap: 8rem; /* Tăng khoảng cách giữa các mục timeline nhiều hơn */
+    position: relative;
+    padding: 60px 0; /* Tăng padding để tạo không gian */
+}
+
+.timeline-center {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    position: relative;
+    align-self: stretch;
+    margin: 40px 0;
+    min-height: 1200px; /* Increased height to provide more scrolling area */
+    z-index: 1;
+    margin-top: 120px; /* Increase additional margin from 80px to 120px */
+}
+
+.center-image {
+    max-width: 120%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.22);
+    position: sticky; /* Enable sticky positioning */
+    top: 65vh; /* Move down further from 60vh to 65vh */
+    transform: translateY(-50%); /* Adjust to truly center the image */
+    z-index: 5; /* Higher z-index to ensure image appears above other content */
+    transition: all 0.4s ease;
+    margin: 0 -10%;
+    will-change: transform; /* Optimize for animations and positioning */
+}
+
+.center-image:hover {
+    transform: translateY(-50%) scale(1.05); /* Keep vertical centering while scaling */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.center-caption {
+    text-align: center;
+    margin-top: 1rem;
+    font-style: italic;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin: 0;
 }
 
 .timeline-date {
-    position: absolute;
-    left: 0;
-    top: 0;
     background: var(--primary-color);
     color: var(--white);
     font-weight: 600;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.8rem;
     border-radius: 30px;
-    font-size: 0.9rem;
-    width: 140px; /* Increased from 120px to fit longer text */
+    font-size: 1.05rem;
     text-align: center;
+    display: inline-block;
+    margin-bottom: 1.2rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    min-width: 180px; /* Đảm bảo chiều rộng tối thiểu */
+    white-space: nowrap; /* Giúp văn bản không bị ngắt dòng */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Styling for timeline date images */
+img.timeline-date {
+    background: transparent;
+    padding: 0;
+    max-width: 600px; /* Tăng kích thước lớn hơn nữa */
+    width: 100%; /* Đảm bảo chiếm đủ độ rộng có thể */
+    height: auto;
+    border-radius: 0; /* Bỏ border-radius */
+    object-fit: cover;
+    box-shadow: none; /* Bỏ box-shadow để không còn hiệu ứng box hiện đằng sau */
+    margin-bottom: 2rem; /* Tăng khoảng cách với content box */
+}
+
+.timeline-date:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+img.timeline-date:hover {
+    transform: translateY(-5px) scale(1.05);
+    z-index: 10; /* Đảm bảo hiển thị phía trên khi hover */
 }
 
 .timeline-content {
     background: var(--white);
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: var(--shadow);
-    padding: 1.5rem;
+    padding: 1.8rem;
     position: relative;
-    width: 100%;
-    margin-top: 10px; /* Added to give space between date and content */
+    width: 85%; /* Giảm độ rộng để nhỏ hơn box hình ảnh */
+    max-width: 360px; /* Đặt kích thước tối đa để đảm bảo nhỏ hơn box hình ảnh */
+    z-index: 2;
+    margin-bottom: 0.8rem;
+    margin-left: auto; /* Căn chỉnh lại cho timeline bên trái */
+    margin-right: auto; /* Căn chỉnh lại cho timeline bên phải */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-content h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.timeline-content p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Decorative line connecting timeline items */
+.timeline-left:after, .timeline-right:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--primary-color);
+    z-index: 1;
+}
+
+.timeline-left:after {
+    right: -17px;
+}
+
+.timeline-right:after {
+    left: -17px;
+}
+
+.timeline-left .timeline-item:before, .timeline-right .timeline-item:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--primary-color);
+    z-index: 2;
+    top: calc(50% - 8px); /* Center vertically relative to the content */
+}
+
+.timeline-left .timeline-item:before {
+    right: -23px;
+}
+
+.timeline-right .timeline-item:before {
+    left: -23px;
+}
+
+/* Specific styling for left and right panels */
+.timeline-right {
+    text-align: left;
+}
+
+.timeline-left {
+    text-align: right;
+}
+
+.timeline-left .timeline-date {
+    display: inline-block;
+    margin-right: 0;
+    float: none;
+}
+
+.timeline-right .timeline-date {
+    display: inline-block;
+    margin-left: 0;
+    float: none;
+}
+
+.timeline-left .timeline-content {
+    text-align: right;
+}
+
+.timeline-right .timeline-content {
+    text-align: left;
+}
+
+.timeline-item:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.timeline-item {
+    clear: both;
+    overflow: visible;
+}
+
+/* Center vertical line connecting to items */
+.timeline-center::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+    z-index: 1;
+    height: 100%;
+    display: none; /* Hide this line as it's causing visual conflicts */
 }
 
 /* Responsive adjustments */
-@media (max-width: 992px) {
-    .timeline::before {
-        left: 100px; /* Adjusted for tablet */
-    }
-
-    .timeline li {
-        padding-left: 130px; /* Adjusted for tablet */
+@media (max-width: 1024px) {
+    .split-timeline {
+        flex-direction: column;
+        gap: 3.5rem;
     }
     
-    .timeline-date {
-        width: 120px;
-        font-size: 0.8rem;
+    .timeline-center {
+        margin: 20px auto;
+        padding: 0;
+        min-height: auto;
+        position: relative;
+    }
+    
+    .center-image {
+        position: static;
+        max-width: 90%;
+        margin: 0 auto;
+        transform: none;
+    }
+    
+    .center-image:hover {
+        transform: scale(1.05);
+    }
+    
+    .timeline-left:after, .timeline-right:after {
+        left: 0;
+        right: auto;
+    }
+    
+    .timeline-left .timeline-item, .timeline-right .timeline-item {
+        text-align: left;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    
+    .timeline-left .timeline-item:before, .timeline-right .timeline-item:before {
+        left: -48px;
+        right: auto;
+        top: 15px;
+    }
+    
+    .timeline-left .timeline-date, .timeline-right .timeline-date {
+        float: none;
+        display: block;
+        margin-bottom: 1rem;
+        min-width: 170px; /* Đảm bảo chiều rộng tối thiểu cho chế độ hiển thị dạng cột */
+    }
+      img.timeline-date {
+        max-width: 260px; /* Tăng kích thước trên màn hình trung bình */
+    }
+    
+    .timeline-left .timeline-content {
+        text-align: left;
+    }
+    
+    /* Add connecting horizontal lines for mobile view */
+    .timeline-left .timeline-item:after, .timeline-right .timeline-item:after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 4px;
+        background: var(--primary-color);
+        left: -40px;
+        top: 15px;
     }
 }
 
 @media (max-width: 768px) {
-    .timeline::before {
-        left: 15px; /* Moved timeline further left on mobile */
+    .production-process {
+        padding: 2rem 0;
+    }
+
+    .process-step {
+        padding: 1.8rem;
     }
     
-    .timeline li {
-        padding-left: 0;
-        padding-top: 45px; /* Space for date above content */
-        flex-direction: column;
+    .process-grid {
+        grid-template-columns: 1fr;
     }
     
-    .timeline-date {
-        width: auto;
-        min-width: 130px;
-        max-width: 80%;
-        left: 30px; /* Positioned to the right of the timeline line */
-        top: 0;
-        font-size: 0.9rem;
+    /* Responsive cho timeline images */
+    img.timeline-date {
+        max-width: 320px;
     }
     
     .timeline-content {
-        margin-left: 30px; /* Align with the date */
-        width: calc(100% - 30px);
+        width: 90%;
+        max-width: 300px;
+    }
+    
+    .timeline-left, .timeline-right {
+        gap: 6rem;
     }
 }
 
 @media (max-width: 576px) {
-    .timeline-date {
-        left: 25px;
+    .process-step {
+        padding: 1.5rem;
+    }
+    
+    .step-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .process-step h4 {
+        font-size: 1.3rem;
+    }
+    
+    .production-process h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.8rem;
+    }
+    
+    .process-step p {
+        font-size: 0.95rem;
+    }
+    
+    /* Responsive cho timeline images */
+    img.timeline-date {
+        max-width: 280px;
     }
     
     .timeline-content {
-        margin-left: 25px;
-        width: calc(100% - 25px);
+        padding: 1.5rem;
+        max-width: 250px;
+    }
+    
+    .timeline-left, .timeline-right {
+        gap: 5rem;
+        padding: 40px 0;
+    }
+    
+    .split-timeline {
+        gap: 30px;
     }
 }
+
+/* For extra small screens */
+@media (max-width: 480px) {
+    img.timeline-date {
+        max-width: 150px; /* Tăng kích thước trên màn hình rất nhỏ */
+    }
+    
+    .timeline-content h4 {
+        font-size: 1.1rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Production Process Styling */
+.production-process {
+    margin-top: 4rem;
+    padding: 3rem 0;
+    background-color: rgba(240, 248, 240, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.production-process h3 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.process-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2rem;
+    overflow: visible; /* Changed from hidden to visible */
+    padding: 0.5rem; /* Add padding to prevent border clipping */
+    gap: 0.8rem; /* Add gap between items */
+}
+
+.process-step {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    padding: 1rem;
+    margin: 0.25rem; /* Add more margin around each step */
+    border-radius: 8px;
+    overflow: visible; /* Changed from hidden to visible */
+    min-height: 70px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: rgba(248, 255, 245, 0.7);
+    display: flex;
+    flex-direction: column;
+    will-change: flex, box-shadow, background-color;
+    border: 1px solid rgba(76, 175, 80, 0.1); /* Add subtle border */
+}
+
+.process-step h4 {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    color: #356845;
+}
+
+.process-step .step-icon {
+    margin-right: 10px;
+    font-size: 1.1rem;
+    color: #4C9063;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.process-step p {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), 
+                opacity 0.3s ease 0.1s,
+                margin 0.3s ease,
+                padding 0.3s ease;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+.process-step:hover {
+    flex: 3;
+    background-color: rgba(240, 255, 240, 0.95);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    border-color: rgba(76, 175, 80, 0.3); /* Enhance border on hover */
+}
+
+.process-step:hover p {
+    max-height: 300px; /* Safe maximum height that can contain any paragraph */
+    opacity: 1;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed #ccc;
+    transform: translateY(0);
+    transition: max-height 0.5s cubic-bezier(0, 0, 0.2, 1), 
+                opacity 0.4s ease 0.2s,
+                margin 0.3s ease,
+                padding 0.3s ease,
+                transform 0.4s ease;
+    pointer-events: auto;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .process-grid {
+        flex-direction: column;
+        padding: 0.5rem 1rem; /* Increase horizontal padding on mobile */
+    }
+    
+    .process-step {
+        margin: 0.5rem 0.25rem; /* Adjust margins on mobile */
+        width: calc(100% - 0.5rem); /* Account for margins */
+    }
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+    .process-image-container {
+        margin: 1.5rem auto 2rem;
+    }
+}
+
+/* History section container */
+.history {
+    min-height: 1500px; /* Ensure section has enough height for sticky behavior */
+    position: relative;
+    overflow: visible;
+}
+
+
+/* Add a small enhancement to the history section to make it more modern */
+.history {
+    scroll-behavior: smooth;
+}
+
+/* Improve spacing in history wrapper */
+.history-wrapper {
+    padding-top: 40px; /* Increase padding from 20px to 40px */
+}
+
+/* Update the process image container styles */
+.process-image-container {
+    margin: 2rem auto 3rem;
+    text-align: center;
+    max-width: 70%; /* Reduced from 100% to 70% */
+    display: block;
+}
+
+.process-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust for smaller screens */
+@media screen and (max-width: 768px) {
+    .process-image-container {
+        max-width: 90%; /* Slightly larger on mobile for better visibility */
+    }
+}
+

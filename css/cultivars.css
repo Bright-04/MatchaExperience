@@ -1,7 +1,7 @@
 /* Cultivars Section */
 .cultivars {
 	padding: 5rem 0;
-	background-color: var(--white);
+    background-color: rgba(232, 245, 233, 0.8); /* --primary-light with 80% opacity */
 }
 
 .cultivars-intro {

@@ -9,22 +9,62 @@ export default function Home() {
 	return (
 		<div className="flex flex-col items-center">
 			{/* Hero Section */}
-			<div className="hero w-full py-24 px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-br from-primary-light/10 via-primary-light/20 to-primary-light/10 dark:from-primary-dark/30 dark:via-primary-dark/20 dark:to-primary-dark/30">
-				<div className="max-w-7xl mx-auto">
-					<h1 className="text-4xl md:text-6xl font-bold text-primary-dark dark:text-primary-light mb-4 font-serif animate-fade-in">
-						Discover the World of <span className="text-primary dark:text-primary-light/90">Matcha</span>
-					</h1>
-					<p className="text-xl md:text-2xl text-primary-dark/80 dark:text-primary-light/80 mb-12 max-w-3xl mx-auto animate-fade-in animate-stagger-delay-1">
-						Explore the tradition, varieties, and exceptional qualities of authentic Japanese matcha
-					</p>
-					<div className="flex flex-col sm:flex-row justify-center gap-5 animate-fade-in animate-stagger-delay-2">
-						<Button href="/history" variant="primary" size="lg">
-							Explore History
-						</Button>
-						<Button href="/cultivars" variant="secondary" size="lg">
-							View Cultivars
-						</Button>
+			<div className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden">
+				{/* Background Pattern Layer */}
+				<div className="absolute inset-0 bg-[url('/images/matcha-pattern.png')] opacity-5 bg-repeat" />
+
+				{/* Gradient Overlay */}
+				<div className="absolute inset-0">
+					<div className="absolute inset-0 bg-gradient-to-br from-accent/40 via-primary-lightest to-primary-light/60 dark:from-accent/30 dark:via-primary/30 dark:to-primary-darkest/40" />
+					<div className="absolute inset-0 bg-gradient-to-tl from-primary/30 via-transparent to-accent-light/40 dark:from-primary/20 dark:via-transparent dark:to-accent/20 mix-blend-soft-light" />
+					<div className="absolute inset-0 bg-gradient-to-t from-primary-lightest/60 via-transparent to-accent-light/10" />
+				</div>
+
+				<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 flex flex-col md:flex-row items-center gap-16">
+					{/* Text Content */}
+					<div className="flex-1 text-center md:text-left z-10">
+						<h1 className="text-5xl md:text-7xl font-bold text-primary-dark dark:text-primary-light mb-6 font-serif animate-slide-up">
+							<span className="block">Discover the</span>
+							<span className="block text-primary dark:text-primary-light mt-2">Art of Matcha</span>
+						</h1>
+						<p className="text-xl md:text-2xl text-primary-dark/80 dark:text-primary-light/80 mb-12 max-w-2xl animate-fade-in animate-stagger-delay-1">
+							Journey through centuries of Japanese tradition, expertly crafted into every cup of our premium matcha
+						</p>
+						<div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fade-in animate-stagger-delay-2">
+							<Button href="/products" variant="primary" size="lg">
+								Explore Collection
+							</Button>
+							<Button href="/history" variant="secondary" size="lg">
+								Learn More
+							</Button>
+						</div>
 					</div>
+
+					{/* Image Section */}
+					<div className="flex-1 relative w-full aspect-square max-w-md animate-fade-in animate-stagger-delay-2">
+						<div className="relative z-10 w-full h-full rounded-full overflow-hidden shadow-2xl ring-1 ring-primary/10 transform hover:scale-105 transition-transform duration-500">
+							<Image
+								src="/images/bowl-of-matcha-vertical.jpg"
+								alt="Traditional matcha bowl"
+								fill
+								style={{ objectFit: "cover" }}
+								className="brightness-105 hover:brightness-110 transition-all duration-500"
+								priority
+							/>{" "}
+							{/* Decorative elements */}
+							<div className="absolute inset-0 bg-gradient-to-t from-primary-dark/30 via-primary/20 to-transparent" />
+							<div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-transparent to-primary-light/20 mix-blend-overlay" />
+						</div>
+						{/* Decorative circle */}
+						<div className="absolute -inset-4 border-2 border-primary/20 rounded-full animate-spin-slow" />
+					</div>
+				</div>
+
+				{/* Scroll indicator */}
+				<div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+					<svg className="w-6 h-6 text-primary-dark/50 dark:text-primary-light/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+					</svg>
 				</div>
 			</div>
 			{/* Featured Matcha Section */}

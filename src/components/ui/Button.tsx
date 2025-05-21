@@ -3,7 +3,7 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 
-type ButtonVariant = "primary" | "secondary" | "accent" | "outline";
+type ButtonVariant = "primary" | "secondary" | "accent" | "outline" | "text";
 type ButtonSize = "sm" | "md" | "lg";
 
 type ButtonProps = {
@@ -21,49 +21,53 @@ type ButtonProps = {
 };
 
 const Button = ({ children, variant = "primary", size = "md", href, className = "", onClick, disabled = false, type = "button", fullWidth = false, icon, iconPosition = "left" }: ButtonProps) => {
-	// Base styles shared by all variants
 	const baseStyles = `
-    inline-flex items-center justify-center 
-    font-medium rounded-lg transition-all
+    inline-flex items-center justify-center
+    font-medium tracking-wide
+    transition-all duration-300 ease-in-out
     ${fullWidth ? "w-full" : ""}
-    ${disabled ? "opacity-50 cursor-not-allowed" : ""}
+    ${disabled ? "opacity-50 cursor-not-allowed" : "hover:scale-[1.02] active:scale-[0.98]"}
   `;
 
-	// Size-specific styles
 	const sizeStyles = {
 		sm: "px-4 py-2 text-sm",
-		md: "px-6 py-3 text-base",
-		lg: "px-8 py-4 text-lg",
+		md: "px-6 py-2.5 text-base",
+		lg: "px-8 py-3 text-lg",
 	};
 
-	// Variant-specific styles
+	// Updated variant styles with more subtle, vintage-inspired design
 	const variantStyles = {
-		primary: "bg-primary hover:bg-primary-dark text-white shadow-md hover:shadow-lg transform hover:-translate-y-1",
-		secondary:
-			"bg-white dark:bg-primary-dark/30 hover:bg-primary-light/10 dark:hover:bg-primary-dark/50 text-primary-dark dark:text-primary-light border border-primary/30 dark:border-primary/30 shadow-md hover:shadow-lg transform hover:-translate-y-1",
-		accent: "bg-accent hover:bg-accent-dark text-white shadow-md hover:shadow-lg transform hover:-translate-y-1",
-		outline: "bg-transparent border border-primary text-primary hover:bg-primary/10 dark:border-primary-light dark:text-primary-light shadow-sm hover:shadow-md",
+		primary: "bg-primary text-text-light rounded-md hover:bg-primary-dark shadow-sm",
+		secondary: "bg-background border-2 border-primary text-primary rounded-md hover:bg-primary/5",
+		accent: "bg-accent text-text-light rounded-md hover:bg-accent-dark shadow-sm",
+		outline: "bg-transparent border border-current text-primary hover:bg-primary/5 rounded-md",
+		text: "bg-transparent text-primary hover:bg-primary/5 rounded-md px-2",
 	};
 
-	// Combine all styles
-	const buttonStyles = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
+	// Icon styles
+	const iconStyles = icon ? `gap-2 ${iconPosition === "right" ? "flex-row-reverse" : "flex-row"}` : "";
+
+	const buttonStyles = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${iconStyles} ${className}`;
+
+	const ButtonContent = () => (
+		<>
+			{icon}
+			{children}
+		</>
+	);
 
 	// Render as link or button
 	if (href) {
 		return (
-			<Link href={href} className={buttonStyles} onClick={onClick}>
-				{icon && iconPosition === "left" && <span className="mr-2">{icon}</span>}
-				{children}
-				{icon && iconPosition === "right" && <span className="ml-2">{icon}</span>}
+			<Link href={href} className={buttonStyles}>
+				<ButtonContent />
 			</Link>
 		);
 	}
 
 	return (
 		<button type={type} className={buttonStyles} onClick={onClick} disabled={disabled}>
-			{icon && iconPosition === "left" && <span className="mr-2">{icon}</span>}
-			{children}
-			{icon && iconPosition === "right" && <span className="ml-2">{icon}</span>}
+			<ButtonContent />
 		</button>
 	);
 };

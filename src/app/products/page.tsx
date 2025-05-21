@@ -100,7 +100,7 @@ export default function Products() {
 				<div className="max-w-7xl mx-auto text-center">
 					<h2 className="text-3xl font-bold text-primary-dark dark:text-primary-light mb-6 font-serif">More Products Coming Soon</h2>
 					<p className="text-xl text-primary-dark/80 dark:text-primary-light/80 mb-8 max-w-3xl mx-auto">
-						We're expanding our selection to include matcha accessories, gift sets, and more. Check back soon!
+						We&apos;re expanding our selection to include matcha accessories, gift sets, and more. Check back soon!
 					</p>
 					<Link
 						href="/"

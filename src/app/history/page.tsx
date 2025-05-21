@@ -25,8 +25,8 @@ export default function History() {
 							<div className="ml-12">
 								<h3 className="text-2xl font-bold text-primary-dark dark:text-primary-light mb-2 font-serif">Origins in Tang Dynasty China</h3>
 								<p className="text-primary-dark/80 dark:text-primary-light/80 mb-4">
-									The earliest form of powdered tea emerged during China's Tang Dynasty. Tea leaves were steamed, molded into cakes, and then ground into powder before being whisked
-									with hot water.
+									The earliest form of powdered tea emerged during China&apos;s Tang Dynasty. Tea leaves were steamed, molded into cakes, and then ground into powder before being
+									whisked with hot water.
 								</p>
 								<div className="relative h-64 w-full rounded-lg overflow-hidden shadow-md">
 									<Image src="/images/bowl-of-matcha-horz.jpg" alt="Ancient tea ceremony" fill style={{ objectFit: "cover" }} />
@@ -42,7 +42,7 @@ export default function History() {
 								<h3 className="text-2xl font-bold text-primary-dark dark:text-primary-light mb-2 font-serif">Introduction to Japan</h3>
 								<p className="text-primary-dark/80 dark:text-primary-light/80 mb-4">
 									Eisai, a Japanese Zen Buddhist monk, brought tea seeds and the method of preparing powdered tea from China to Japan. He planted the seeds on temple grounds and
-									wrote "Kissa Yōjōki" (喫茶養生記), a treatise on tea drinking for health.
+									wrote &quot;Kissa Yōjōki&quot; (喫茶養生記), a treatise on tea drinking for health.
 								</p>
 								<div className="relative h-64 w-full rounded-lg overflow-hidden shadow-md">
 									<Image src="/images/cup-of-matcha-vertical.jpg" alt="Japanese tea ceremony" fill style={{ objectFit: "cover" }} />
@@ -125,7 +125,8 @@ export default function History() {
 								ceramic art.
 							</p>
 							<p className="text-primary-dark/80 dark:text-primary-light/80">
-								The concept of "wabi-sabi" (finding beauty in imperfection and transience) was central to the tea ceremony and remains a core principle in Japanese aesthetics.
+								The concept of &quot;wabi-sabi&quot; (finding beauty in imperfection and transience) was central to the tea ceremony and remains a core principle in Japanese
+								aesthetics.
 							</p>
 						</div>
 					</div>

@@ -8,7 +8,7 @@ export default function NotFound() {
 
 			<h1 className="text-4xl font-bold text-green-800 mb-4">Oops! Page Not Found</h1>
 
-			<p className="text-xl text-green-700 mb-8 max-w-md">We couldn't find the page you were looking for. Perhaps it's time to take a moment and enjoy a cup of matcha instead?</p>
+			<p className="text-xl text-green-700 mb-8 max-w-md">We couldn&apos;t find the page you were looking for. Perhaps it&apos;s time to take a moment and enjoy a cup of matcha instead?</p>
 
 			<div className="flex flex-col sm:flex-row gap-4">
 				<Link href="/" className="bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-lg text-lg font-medium transition duration-300">

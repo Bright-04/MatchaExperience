@@ -1,6 +1,5 @@
 // filepath: d:\IT Study (2024 - 2025)\MatchaExperience\src\components\Footer.tsx
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Footer() {
 	return (
@@ -177,4 +176,3 @@ export default function Footer() {
 		</footer>
 	);
 }
-

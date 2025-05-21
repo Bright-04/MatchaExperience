@@ -112,7 +112,7 @@ export default function EffectsPage() {
 
 					<div className="mt-16 bg-primary-light/10 dark:bg-primary-dark/30 p-8 rounded-lg shadow-soft">
 						<h2 className="text-2xl font-semibold text-primary-dark dark:text-primary-light mb-4 font-serif">Daily Consumption Guidelines</h2>
-						<p className="text-primary-dark/80 dark:text-primary-light/80 mb-4">While matcha is generally safe for most people, it's recommended to:</p>
+						<p className="text-primary-dark/80 dark:text-primary-light/80 mb-4">While matcha is generally safe for most people, it&apos;s recommended to:</p>
 						<ul className="list-disc list-inside text-primary-dark/80 dark:text-primary-light/80 space-y-2">
 							<li>Start with 1-2 cups per day</li>
 							<li>Drink it early in the day due to caffeine content</li>

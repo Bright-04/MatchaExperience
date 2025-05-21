@@ -5,7 +5,7 @@ import { createContext, useContext, useState, useEffect, ReactNode } from "react
 export type CartItem = {
 	id: string;
 	name: string;
-	price: string;
+	price: number;
 	image: string;
 	quantity: number;
 };
@@ -17,7 +17,7 @@ type CartContextType = {
 	updateQuantity: (id: string, quantity: number) => void;
 	clearCart: () => void;
 	itemCount: number;
-	subtotal: string;
+	subtotal: number;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -36,15 +36,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
 	// Load cart from localStorage on client-side
 	useEffect(() => {
-		const storedCart = localStorage.getItem("matchaCart");
-		if (storedCart) {
-			try {
-				setItems(JSON.parse(storedCart));
-			} catch (error) {
-				console.error("Failed to parse cart from localStorage:", error);
+		if (typeof window !== "undefined") {
+			const storedCart = localStorage.getItem("matchaCart");
+			if (storedCart) {
+				try {
+					setItems(JSON.parse(storedCart));
+				} catch (error) {
+					console.error("Failed to parse cart from localStorage:", error);
+					setItems([]);
+				}
 			}
+			setLoaded(true);
 		}
-		setLoaded(true);
 	}, []);
 
 	// Save cart to localStorage whenever it changes
@@ -58,12 +61,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 	const itemCount = items.reduce((count, item) => count + item.quantity, 0);
 
 	// Calculate subtotal
-	const subtotal = items
-		.reduce((total, item) => {
-			const price = parseFloat(item.price.replace("$", ""));
-			return total + price * item.quantity;
-		}, 0)
-		.toFixed(2);
+	const subtotal = items.reduce((total, item) => total + item.price * item.quantity, 0);
 
 	// Add item to cart
 	const addItem = (newItem: Omit<CartItem, "quantity">) => {
@@ -106,7 +104,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 		updateQuantity,
 		clearCart,
 		itemCount,
-		subtotal: `$${subtotal}`,
+		subtotal,
 	};
 
 	return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -20,11 +19,11 @@ const products = {
 			
 			<p>After harvesting, the leaves are meticulously de-stemmed and de-veined before being stone-ground into a fine powder using traditional granite stone mills. This slow and careful grinding process preserves the delicate flavor compounds and prevents heat buildup that could compromise quality.</p>
 			
-			<p>The result is a vibrant, emerald-green powder with an exceptionally smooth, umami-rich flavor profile. You'll notice subtle notes of sweet grass, fresh spring vegetables, and a pleasant, lingering sweetness on the palate. The aroma is fresh and inviting, with hints of cream and freshly steamed greens.</p>
+			<p>The result is a vibrant, emerald-green powder with an exceptionally smooth, umami-rich flavor profile. You&apos;ll notice subtle notes of sweet grass, fresh spring vegetables, and a pleasant, lingering sweetness on the palate. The aroma is fresh and inviting, with hints of cream and freshly steamed greens.</p>
 			
 			<p>Our Ceremonial Grade Matcha contains naturally occurring caffeine (approximately 35mg per serving) and high levels of L-theanine, which work in harmony to provide sustained, focused energy without the jitters commonly associated with coffee.</p>
 			
-			<p>This premium matcha is best enjoyed in the traditional manner - whisked with hot (not boiling) water using a bamboo chasen (whisk) to create a frothy, smooth tea. It's perfect for mindful moments, meditative practice, or whenever you seek exceptional quality in your matcha experience.</p>
+			<p>This premium matcha is best enjoyed in the traditional manner - whisked with hot (not boiling) water using a bamboo chasen (whisk) to create a frothy, smooth tea. It&apos;s perfect for mindful moments, meditative practice, or whenever you seek exceptional quality in your matcha experience.</p>
 		`,
 		instructions: `
 			<h3>Traditional Preparation:</h3>
@@ -50,7 +49,7 @@ const products = {
 			{
 				author: "Matcha Enthusiast",
 				rating: 5,
-				comment: "This is the most vibrant and smooth matcha I've ever tried. The umami flavor is perfect!",
+				comment: "This is the most vibrant and smooth matcha I&apos;ve ever tried. The umami flavor is perfect!",
 				date: "2025-04-28",
 			},
 			{

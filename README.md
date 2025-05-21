@@ -1,10 +1,14 @@
-# 🍵 Matcha Experience Website
+# 🍵 Matcha Hood™
+
+<p align="center">
+  <img src="./images/1-Home/logo.png" alt="Matcha Hood Logo" width="200">
+</p>
 
 A modern, responsive website dedicated to showcasing the rich history, varieties, and benefits of matcha green tea in Vietnamese culture.
 
 ## 🌟 About
 
-Matcha Experience is an educational platform designed to provide comprehensive information about matcha, from its ancient origins to modern preparation methods. The site serves as a resource for both matcha enthusiasts and newcomers, with a focus on Vietnamese appreciation of this traditional Japanese tea.
+Matcha Hood is an educational platform designed to provide comprehensive information about matcha, from its ancient origins to modern preparation methods. The site serves as a resource for both matcha enthusiasts and newcomers, with a focus on Vietnamese appreciation of this traditional Japanese tea.
 
 ## 📚 Content Sections
 
@@ -79,7 +83,7 @@ The website is fully responsive with:
 -   Smooth scrolling navigation
 -   Page loading animations with preloader
 -   Reveal animations as you scroll
--   Interactive elements throughout
+-   Interactive recipe modal popups
 -   Back-to-top button for easy navigation
 
 ### 🎨 Visual Design
@@ -99,13 +103,19 @@ The website is fully responsive with:
  ┃ ┣ 📜 main.css          # Main CSS styles
  ┃ ┣ 📜 cultivars.css     # Styles for cultivars section
  ┃ ┣ 📜 history.css       # Styles for history section
+ ┃ ┣ 📜 hero.css          # Styles for hero section
+ ┃ ┣ 📜 recipes.css       # Styles for recipes section
  ┃ ┗ 📜 footer-responsive.css # Mobile-specific footer styles
  ┣ 📂 images/             # Image assets
+ ┃ ┣ 📂 1-Home/           # Hero section images
+ ┃ ┣ 📂 CongThucMatcha/   # Recipe images
+ ┃ ┣ 📂 cultivar/         # Cultivar images
+ ┃ ┣ 📂 history/          # History section images
+ ┃ ┣ 📂 PhanHang/         # Tiers section images
+ ┃ ┣ 📂 TacDung/          # Effects section images
  ┃ ┣ 📜 matcha-pattern.png
- ┃ ┣ 📜 bowl-of-matcha-horz.jpg
- ┃ ┣ 📜 bowl-of-matcha-vertical.jpg
- ┃ ┣ 📜 cup-of-matcha-vertical.jpg
- ┃ ┗ 📜 [additional images...]
+ ┃ ┣ 📜 matcha-collage.jpg
+ ┃ ┗ 📜 QuyTrinhSanXuat.png
  ┗ 📂 js/                 # JavaScript files
    ┣ 📜 script.js         # Main JavaScript functionality
    ┗ 📜 navbar.js         # Navigation functionality
@@ -126,4 +136,4 @@ For inquiries about this project:
 
 ## 📝 License
 
-© 2025 Matcha Experience. All rights reserved.
+© 2025 Matcha Hood. All rights reserved.

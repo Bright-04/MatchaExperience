@@ -1472,24 +1472,32 @@ main {
 
 .tier-content {
 	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-.tier-icon {
-	text-align: center;
-	font-size: 2.5rem;
-	margin-bottom: 1.5rem;
+.tier-image {
+	margin: 0 auto 1.5rem;
+	max-width: 90%;
+	overflow: hidden;
+	border-radius: 8px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	transition: var(--transition);
 }
 
-.tier-card.ceremonial .tier-icon {
-	color: #388e3c;
+.tier-img {
+	width: 100%;
+	height: auto;
+	display: block;
+	filter: grayscale(100%);
+	transition: filter 0.5s ease, transform 0.5s ease;
 }
 
-.tier-card.premium .tier-icon {
-	color: #4caf50;
-}
-
-.tier-card.culinary .tier-icon {
-	color: #7cb342;
+.tier-image:hover .tier-img,
+.tier-img:hover {
+	filter: grayscale(0%);
+	transform: scale(1.05);
 }
 
 .tier-features {
